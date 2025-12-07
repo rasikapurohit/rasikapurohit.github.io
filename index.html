@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Rasika Purohit • Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      /* Fonts & base */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
+      :root {
+        --bg: #fafafa;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --accent1: #6366f1;
+        --accent2: #d946ef;
+        --accent3: #f43f5e;
+        --glass: rgba(255, 255, 255, 0.7);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      } /* native smooth scroll */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        background: var(--bg);
+        color: #111827;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.45;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--accent1),
+          var(--accent2),
+          var(--accent3)
+        );
+        color: white;
+        padding: 48px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        box-shadow: 0 6px 24px rgba(17, 24, 39, 0.08);
+        backdrop-filter: blur(6px);
+      }
+      .header-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.18),
+          rgba(255, 255, 255, 0.06)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 20px;
+        box-shadow: 0 6px 18px rgba(99, 102, 241, 0.12),
+          inset 0 -6px 18px rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .title h1 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: -0.4px;
+      }
+      .title p {
+        margin: 0;
+        font-size: 13px;
+        opacity: 0.95;
+      }
+
+      /* Nav + CTA */
+      nav {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      nav a {
+        color: rgba(255, 255, 255, 0.95);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        transition: opacity 0.18s, transform 0.12s;
+      }
+      nav a:hover {
+        opacity: 1;
+        transform: translateY(-2px);
+      }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        font-weight: 700;
+        border-radius: 12px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.12);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta:active {
+        transform: scale(0.98);
+      }
+      .cta .icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.18),
+          rgba(255, 255, 255, 0.06)
+        );
+        display: inline-block;
+        text-align: center;
+        line-height: 18px;
+        font-size: 12px;
+      }
+
+      /* Main layout */
+      main {
+        max-width: 1100px;
+        margin: 28px auto;
+        padding: 0 20px 80px;
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 28px;
+      }
+      @media (max-width: 960px) {
+        main {
+          grid-template-columns: 1fr;
+          padding-bottom: 40px;
+        }
+        nav {
+          display: none;
+        }
+      }
+
+      /* Card */
+      .card {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 22px;
+        box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+        border: 1px solid rgba(15, 23, 42, 0.03);
+      }
+
+      /* Hero (left top) */
+      .hero {
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+      }
+      .avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--accent1), var(--accent2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 26px;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12);
+        flex-shrink: 0;
+      }
+      .hero h2 {
+        margin: 0;
+        font-size: 22px;
+      }
+      .hero p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      /* Sections */
+      .section {
+        margin-top: 18px;
+      }
+      .section h3 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+      .list-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 0;
+        border-top: 1px solid #f2f2f4;
+      }
+      .list-item:first-of-type {
+        border-top: none;
+      }
+      .left {
+        max-width: 70%;
+      }
+      .left .role {
+        font-weight: 700;
+      }
+      .left .org {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 4px;
+      }
+      .right {
+        color: var(--muted);
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      /* Skills chips */
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        font-size: 13px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid #eee;
+        background: linear-gradient(180deg, #fff, #fafafa);
+      }
+
+      /* Projects sample */
+      .project {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 12px;
+        background: linear-gradient(
+          180deg,
+          rgba(99, 102, 241, 0.04),
+          rgba(212, 212, 255, 0.02)
+        );
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .project .meta {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .project small {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 6px;
+      }
+
+      /* Right column */
+      .right-col .card + .card {
+        margin-top: 18px;
+      }
+      .edu-logos {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .edu-logos img {
+        height: 42px;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        padding: 6px;
+        background: white;
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 28px;
+        background: #111827;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 12px;
+        box-shadow: 0 12px 40px rgba(2, 6, 23, 0.3);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s ease, transform 0.2s ease;
+        z-index: 60;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-6px);
+        pointer-events: auto;
+      }
+
+      /* Button click animation (class toggled on click) */
+      .btn-click-anim {
+        animation: btnPop 0.36s cubic-bezier(0.2, 0.9, 0.2, 1);
+      }
+      @keyframes btnPop {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 6px 20px rgba(99, 102, 241, 0.08);
+        }
+        40% {
+          transform: scale(0.96);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 14px 40px rgba(99, 102, 241, 0.12);
+        }
+      }
+
+      /* subtle floating in */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fiup 0.6s forwards;
+      }
+      @keyframes fiup {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* small helper */
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <div class="brand">
+          <div class="logo">RP</div>
+          <div class="title">
+            <h1>Rasika Purohit</h1>
+            <p>Python Developer • Security Enthusiast • Mumbai</p>
+          </div>
+        </div>
+
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <!-- contact intentionally removed -->
+        </nav>
+
+        <!-- CTA button with animation + action -->
+        <button id="resumeBtn" class="cta" title="Download Resume">
+          <span class="icon">⇩</span>
+          <span>Download Resume</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <article class="card fade-in-up" id="about">
+          <div class="hero">
+            <div class="avatar">RP</div>
+            <div>
+              <h2>About</h2>
+              <p>
+                I am Rasika Purohit — a backend-focused Python developer with
+                experience in building secure, maintainable systems. I enjoy
+                automation, system design, and exploring security best
+                practices.
+              </p>
+              <p class="muted" style="margin-top: 10px">
+                Open to interesting backend & security roles. Interested in
+                improving system reliability and developer experience.
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlighted projects -->
+          <div class="section">
+            <h3>Highlighted Projects</h3>
+            <div class="project" style="margin-top: 12px">
+              <div>
+                <div class="meta">Chatbot Integrations</div>
+                <small
+                  >Built reliable connectors and fallback systems for
+                  conversational AI integrations.</small
+                >
+              </div>
+              <div class="muted">Python • FastAPI</div>
+            </div>
+
+            <div class="project" style="margin-top: 12px">
+              <div>
+                <div class="meta">Automation Framework</div>
+                <small
+                  >End-to-end automation to reduce manual testing and release
+                  friction.</small
+                >
+              </div>
+              <div class="muted">CI/CD • Scripting</div>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="card fade-in-up section"
+          id="experience"
+          style="animation-delay: 0.06s"
+        >
+          <h3>Work Experience</h3>
+
+          <div class="list-item">
+            <div class="left">
+              <div class="role">Analyst</div>
+              <div class="org">Jio Haptik Technologies Pvt. Ltd.</div>
+            </div>
+            <div class="right">2019 – 2021</div>
+          </div>
+
+          <div class="list-item">
+            <div class="left">
+              <div class="role">Executive</div>
+              <div class="org">IDBI Intech Pvt. Ltd.</div>
+            </div>
+            <div class="right">2022 – 2025</div>
+          </div>
+
+          <div class="list-item">
+            <div class="left">
+              <div class="role">Python Developer</div>
+              <div class="org">Safran India Pvt. Ltd.</div>
+            </div>
+            <div class="right">2025 – Present</div>
+          </div>
+        </article>
+
+        <article
+          class="card fade-in-up section"
+          id="education"
+          style="animation-delay: 0.12s"
+        >
+          <h3>Education</h3>
+
+          <div class="list-item">
+            <div class="left">
+              <div class="role">B.Sc. in Information Technology</div>
+              <div class="org">University of Mumbai</div>
+            </div>
+            <div class="right">2015 – 2018</div>
+          </div>
+
+          <div class="list-item">
+            <div class="left">
+              <div class="role">PG Diploma in Information Security</div>
+              <div class="org">University of Glasgow</div>
+            </div>
+            <div class="right">2018 – 2019</div>
+          </div>
+
+          <div class="list-item">
+            <div class="left">
+              <div class="role">Master of Computer Applications</div>
+              <div class="org">University of Mumbai</div>
+            </div>
+            <div class="right">2022 – 2025</div>
+          </div>
+        </article>
+
+        <article
+          class="card fade-in-up section"
+          id="skills"
+          style="animation-delay: 0.18s"
+        >
+          <h3>Skills</h3>
+          <div style="margin-top: 10px" class="chips">
+            <div class="chip">Python</div>
+            <div class="chip">FastAPI</div>
+            <div class="chip">REST API Design</div>
+            <div class="chip">Security Concepts</div>
+            <div class="chip">SQL</div>
+            <div class="chip">System Design</div>
+            <div class="chip">Automation</div>
+          </div>
+        </article>
+
+        <article
+          class="card fade-in-up section"
+          id="projects"
+          style="animation-delay: 0.22s"
+        >
+          <h3>Projects</h3>
+          <p class="muted">
+            Below are a few representative projects — add links or repository
+            references as needed.
+          </p>
+
+          <div class="project" style="margin-top: 12px">
+            <div>
+              <div class="meta">Secure API Gateway</div>
+              <small
+                >Designed token validation & rate-limiting for internal
+                microservices.</small
+              >
+            </div>
+            <div class="muted">Git • Docker</div>
+          </div>
+
+          <div class="project" style="margin-top: 12px">
+            <div>
+              <div class="meta">Data ETL Pipeline</div>
+              <small
+                >Scheduled ETL with monitoring and retry policy to ensure data
+                integrity.</small
+              >
+            </div>
+            <div class="muted">Airflow • Python</div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Right column -->
+      <aside class="right-col">
+        <div class="card fade-in-up" style="animation-delay: 0.1s">
+          <h3>Quick Info</h3>
+          <p class="muted">
+            Based in Mumbai • Available for new roles • Open to remote/onsite
+          </p>
+          <div style="margin-top: 12px" class="edu-logos">
+            <!-- If you have SVG/logo images, drop them in and update src -->
+            <img src="" alt="" style="visibility: hidden" />
+          </div>
+        </div>
+
+        <div class="card fade-in-up section" style="animation-delay: 0.14s">
+          <h3>Contact</h3>
+          <p class="muted">
+            Contact section removed per your request. Use the download button to
+            get a resume or link your email/LinkedIn on the page if you'd like
+            visitors to contact you.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      /* -------------------------
+     Smooth scroll with header offset (for sticky header)
+     ------------------------- */
+      (function () {
+        const header = document.querySelector("header");
+        const headerHeight = () => header.getBoundingClientRect().height;
+        // intercept anchor clicks on same page and apply offset
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href").slice(1);
+            const target = document.getElementById(targetId);
+            if (!target) return;
+            e.preventDefault();
+            const top =
+              target.getBoundingClientRect().top +
+              window.scrollY -
+              headerHeight() -
+              14;
+            window.scrollTo({ top, behavior: "smooth" });
+          });
+        });
+      })();
+
+      /* -------------------------
+     Button click animation + resume download action
+     - adds a quick pop animation
+     - creates a small downloadable resume file (placeholder)
+     - shows toast feedback
+     ------------------------- */
+      (function () {
+        const btn = document.getElementById("resumeBtn");
+        const toast = document.getElementById("toast");
+
+        function showToast(text, ms = 2500) {
+          toast.textContent = text;
+          toast.classList.add("show");
+          clearTimeout(toast._t);
+          toast._t = setTimeout(() => toast.classList.remove("show"), ms);
+        }
+
+        function triggerAnimation(el) {
+          el.classList.remove("btn-click-anim");
+          // force reflow to restart animation
+          void el.offsetWidth;
+          el.classList.add("btn-click-anim");
+        }
+
+        function downloadResume() {
+          // create a small placeholder resume (text). Replace / link to real file if you have one.
+          const filename = "Rasika_Purohit_Resume.txt";
+          const content = [
+            "Rasika Purohit",
+            "Python Developer • Mumbai",
+            "",
+            "Experience:",
+            "- Analyst — Jio Haptik Technologies (2019-2021)",
+            "- Executive — IDBI Intech (2022-2025)",
+            "- Python Developer — Safran India (2025–Present)",
+            "",
+            "Education:",
+            "- B.Sc. IT — University of Mumbai (2015-2018)",
+            "- PG Diploma Info Sec — University of Glasgow (2018-2019)",
+            "- MCA — University of Mumbai (2022-2025)",
+            "",
+            "Skills: Python, FastAPI, REST APIs, Security, Automation",
+          ].join("\\n");
+
+          const blob = new Blob([content], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        btn.addEventListener("click", async function (e) {
+          triggerAnimation(this);
+          showToast("Preparing resume...");
+          // small delay to show animation then download
+          setTimeout(() => {
+            downloadResume();
+            showToast("Resume downloaded ✓", 2200);
+          }, 320);
+        });
+      })();
+
+      /* -------------------------
+     Simple progressive reveal for .fade-in-up elements
+     ------------------------- */
+      (function () {
+        document.querySelectorAll(".fade-in-up").forEach((el, i) => {
+          el.style.animationDelay = i * 80 + "ms";
+          el.style.animationFillMode = "both";
+        });
+      })();
+    </script>
+  </body>
+</html>
