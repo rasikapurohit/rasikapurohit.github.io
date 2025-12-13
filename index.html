@@ -3,152 +3,163 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Rasika Purohit • Portfolio</title>
+    <title>Rasika Purohit • Python Backend Developer</title>
 
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Rasika Purohit — Backend-focused Python Developer from Mumbai. Experienced in FastAPI, Django, system design, and automation."
+    />
+    <meta name="author" content="Rasika Purohit" />
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Rasika Purohit • Portfolio" />
+    <meta
+      property="og:description"
+      content="Backend Python Developer | Secure & Scalable Systems"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
+    />
+
+    <!-- Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <style>
-      /* Fonts & base */
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
+
+      /* =====================
+         COLOR SYSTEM
+      ====================== */
+
+      /* LIGHT (optional) */
       :root {
-        --bg: #fafafa;
+        --bg: #f8fafc;
         --card: #ffffff;
-        --muted: #6b7280;
-        --accent1: #6366f1;
-        --accent2: #d946ef;
-        --accent3: #f43f5e;
-        --glass: rgba(255, 255, 255, 0.7);
-        --badge-bg: rgba(15, 23, 42, 0.06);
-        --badge-border: rgba(15, 23, 42, 0.06);
+        --text: #0f172a;
+        --muted: #64748b;
+        --border: rgba(15, 23, 42, 0.08);
+        --accent1: #a5b4fc;
+        --accent2: #f0abfc;
+        --accent3: #fda4af;
       }
 
-      html {
-        scroll-behavior: smooth;
-      } /* native smooth scroll */
+      /* DARK (DEFAULT) */
+      body {
+        --bg: #0b1020;
+        --card: #121833;
+        --text: #ffffff;
+        --muted: #c7c9d1;
+        --border: rgba(255, 255, 255, 0.12);
+        --accent1: #6366f1;
+        --accent2: #8b5cf6;
+        --accent3: #ec4899;
+      }
+
+      body.light {
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #64748b;
+        --border: rgba(15, 23, 42, 0.08);
+      }
+
       * {
         box-sizing: border-box;
       }
+
       body {
         margin: 0;
-        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
-          "Helvetica Neue", Arial;
+        font-family: Inter, system-ui, sans-serif;
         background: var(--bg);
-        color: #111827;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        line-height: 1.45;
+        color: var(--text);
+        line-height: 1.55;
+        transition: background 0.3s, color 0.3s;
       }
 
-      /* Header */
+      a {
+        color: inherit;
+      }
+
+      /* =====================
+         HEADER / BANNER
+      ====================== */
       header {
-        background: linear-gradient(
-          135deg,
-          var(--accent1),
-          var(--accent2),
-          var(--accent3)
-        );
+        background: linear-gradient(135deg, #1e1b4b, #312e81, #4a044e);
         color: white;
-        padding: 25px 20px;
+        padding: 22px 20px;
         position: sticky;
         top: 0;
-        z-index: 40;
-        box-shadow: 0 6px 24px rgba(17, 24, 39, 0.08);
-        backdrop-filter: blur(6px);
+        z-index: 50;
       }
+
       .header-inner {
         max-width: 1100px;
-        margin: 0 auto;
+        margin: auto;
         display: flex;
-        align-items: center;
-        gap: 18px;
         justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
       }
+
       .brand {
         display: flex;
-        gap: 16px;
+        gap: 14px;
         align-items: center;
-      }
-      .logo {
-        width: 64px;
-        height: 64px;
-        border-radius: 14px;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.18),
-          rgba(255, 255, 255, 0.06)
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        font-size: 20px;
-        box-shadow: 0 6px 18px rgba(99, 102, 241, 0.12),
-          inset 0 -6px 18px rgba(0, 0, 0, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-      .title h1 {
-        margin: 0;
-        font-size: 20px;
-        letter-spacing: -0.4px;
-      }
-      .title p {
-        margin: 0;
-        font-size: 13px;
-        opacity: 0.95;
       }
 
-      /* Nav + CTA */
-      nav {
-        display: flex;
-        gap: 12px;
-        align-items: center;
+      .logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.18);
+        display: grid;
+        place-items: center;
+        font-weight: 800;
       }
+
       nav a {
-        color: rgba(255, 255, 255, 0.95);
+        margin-right: 14px;
         text-decoration: none;
         font-weight: 600;
-        font-size: 14px;
-        padding: 8px 10px;
-        border-radius: 8px;
-        transition: opacity 0.18s, transform 0.12s;
-      }
-      nav a:hover {
-        opacity: 1;
-        transform: translateY(-2px);
-      }
-      .cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 14px;
-        font-weight: 700;
-        border-radius: 12px;
-        cursor: pointer;
-        background: rgba(255, 255, 255, 0.12);
         color: white;
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        transition: transform 0.18s ease, box-shadow 0.18s ease;
-        position: relative;
-        overflow: hidden;
-      }
-      .cta:active {
-        transform: scale(0.98);
-      }
-      .cta .icon {
-        width: 18px;
-        height: 18px;
-        border-radius: 4px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.18),
-          rgba(255, 255, 255, 0.06)
-        );
-        display: inline-block;
-        text-align: center;
-        line-height: 18px;
-        font-size: 12px;
       }
 
-      /* Main layout */
+      .actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      button {
+        border: none;
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .cta {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .toggle {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+      }
+
+      /* =====================
+         LAYOUT
+      ====================== */
       main {
         max-width: 1100px;
         margin: 28px auto;
@@ -157,604 +168,680 @@
         grid-template-columns: 1fr 340px;
         gap: 28px;
       }
-      @media (max-width: 960px) {
+
+      @media (max-width: 900px) {
         main {
           grid-template-columns: 1fr;
-          padding-bottom: 40px;
         }
         nav {
           display: none;
         }
       }
 
-      /* Card */
       .card {
         background: var(--card);
         border-radius: 16px;
         padding: 22px;
-        box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
-        border: 1px solid rgba(15, 23, 42, 0.03);
+        border: 1px solid var(--border);
+        margin-bottom: 18px;
       }
 
-      /* Hero (left top) */
-      .hero {
-        display: flex;
-        gap: 18px;
-        align-items: flex-start;
+      h2,
+      h3 {
+        margin-top: 0;
+        color: var(--text);
       }
-      .avatar {
-        width: 96px;
-        height: 96px;
-        border-radius: 14px;
-        background: linear-gradient(135deg, var(--accent1), var(--accent2));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 800;
-        font-size: 26px;
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12);
-        flex-shrink: 0;
-      }
-      .hero h2 {
-        margin: 0;
-        font-size: 22px;
-      }
-      .hero p {
-        margin: 8px 0 0;
+
+      .muted {
         color: var(--muted);
-        font-size: 15px;
+        font-size: 14px;
       }
 
-      /* Sections */
-      .section {
-        margin-top: 18px;
-      }
-      .section h3 {
-        margin: 0 0 12px;
-        font-size: 18px;
-      }
+      /* =====================
+         LIST ITEMS
+      ====================== */
       .list-item {
         display: flex;
         justify-content: space-between;
         gap: 12px;
         padding: 12px 0;
-        border-top: 1px solid #f2f2f4;
-      }
-      .list-item:first-of-type {
-        border-top: none;
-      }
-      .left {
-        max-width: 70%;
-      }
-      .left .role {
-        font-weight: 700;
-      }
-      .left .org {
-        color: var(--muted);
-        font-size: 13px;
-        margin-top: 4px;
-      }
-      .right {
-        color: var(--muted);
-        font-size: 13px;
-        white-space: nowrap;
+        border-top: 1px solid var(--border);
       }
 
-      /* Skills chips */
+      .list-item:first-child {
+        border-top: none;
+      }
+
+      /* =====================
+         SKILLS
+      ====================== */
+      .skill {
+        margin-bottom: 14px;
+      }
+
+      .bar {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        overflow: hidden;
+        margin-top: 6px;
+      }
+
+      .fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      }
+
+      /* =====================
+         PROJECTS
+      ====================== */
+      .project {
+        padding: 14px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        margin-top: 12px;
+      }
+      /* =====================
+   SKILLS — CHIPS STYLE
+===================== */
+      .skill-group {
+        margin-top: 18px;
+      }
+
+      .skill-group h4 {
+        margin: 0 0 10px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+      }
+
       .chips {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-      }
-      .chip {
-        font-size: 13px;
-        padding: 8px 10px;
-        border-radius: 999px;
-        border: 1px solid #eee;
-        background: linear-gradient(180deg, #fff, #fafafa);
-      }
-
-      /* Projects */
-      .project {
-        margin-top: 12px;
-        padding: 12px;
-        border-radius: 12px;
-        background: linear-gradient(
-          180deg,
-          rgba(99, 102, 241, 0.04),
-          rgba(212, 212, 255, 0.02)
-        );
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-      }
-      .project .meta {
-        font-size: 14px;
-        font-weight: 600;
-      }
-      .project small {
-        display: block;
-        color: var(--muted);
-        font-size: 13px;
-        margin-top: 6px;
-      }
-      .project .badges {
-        margin-top: 8px;
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 8px;
-        border-radius: 999px;
-        font-size: 12px;
-        color: #111827;
-        background: var(--badge-bg);
-        border: 1px solid var(--badge-border);
-      }
-      .badge.small {
-        padding: 4px 7px;
-        font-size: 11px;
-      }
-      .project a.repo {
-        display: inline-block;
-        margin-top: 8px;
-        font-size: 13px;
-        color: #374151;
-        text-decoration: none;
-        border-bottom: 1px dashed rgba(55, 65, 81, 0.08);
-      }
-      .project a.repo:hover {
-        text-decoration: underline;
-      }
-
-      /* Right column */
-      .right-col .card + .card {
-        margin-top: 18px;
-      }
-      .edu-logos {
-        display: flex;
         gap: 10px;
-        align-items: center;
-      }
-      .edu-logos img {
-        height: 42px;
-        border-radius: 10px;
-        border: 1px solid #eee;
-        padding: 6px;
-        background: white;
       }
 
-      /* Toast */
-      .toast {
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 28px;
-        background: #111827;
-        color: white;
-        padding: 12px 18px;
-        border-radius: 12px;
-        box-shadow: 0 12px 40px rgba(2, 6, 23, 0.3);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.18s ease, transform 0.2s ease;
-        z-index: 60;
-      }
-      .toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-6px);
-        pointer-events: auto;
-      }
-
-      /* Button click animation (class toggled on click) */
-      .btn-click-anim {
-        animation: btnPop 0.36s cubic-bezier(0.2, 0.9, 0.2, 1);
-      }
-      @keyframes btnPop {
-        0% {
-          transform: scale(1);
-          box-shadow: 0 6px 20px rgba(99, 102, 241, 0.08);
-        }
-        40% {
-          transform: scale(0.96);
-        }
-        100% {
-          transform: scale(1);
-          box-shadow: 0 14px 40px rgba(99, 102, 241, 0.12);
-        }
-      }
-
-      /* subtle floating in */
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(10px);
-        animation: fiup 0.6s forwards;
-      }
-      @keyframes fiup {
-        to {
-          opacity: 1;
-          transform: none;
-        }
-      }
-
-      /* small helper */
-      .muted {
-        color: var(--muted);
+      .chip {
+        padding: 8px 12px;
         font-size: 13px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--border);
+        color: var(--text);
+        transition: transform 0.15s ease, background 0.15s ease;
       }
 
-      /* tiny responsive improvements for badges */
-      @media (max-width: 520px) {
-        .project {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .project .muted {
-          margin-top: 8px;
-        }
+      body.light .chip {
+        background: #f8fafc;
+      }
+
+      .chip:hover {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      /* =====================
+   CERTIFICATIONS GALLERY
+===================== */
+      .cert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 12px;
+      }
+
+      .cert-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .cert-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+      }
+
+      .cert-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .cert-caption {
+        padding: 10px 12px;
+      }
+
+      .cert-caption strong {
+        display: block;
+        font-size: 14px;
+      }
+
+      .cert-caption span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      /* =====================
+   CERT MODAL
+===================== */
+      .cert-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999; /* 🔥 higher than header */
+      }
+
+      .cert-modal-content {
+        max-width: 90%;
+        max-height: 90%;
+        background: var(--card);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .cert-modal-content img {
+        max-width: 100%;
+        max-height: 70vh;
+        display: block;
+        margin: auto;
+      }
+
+      .cert-modal-caption {
+        margin-top: 12px;
+        text-align: center;
+      }
+
+      .cert-modal-content iframe {
+        width: 100%;
+        height: 70vh;
+        border: none;
+        border-radius: 12px;
+      }
+
+      .cert-card * {
+        pointer-events: none;
+      }
+
+      /* =====================
+   CERTIFICATIONS — YEAR GROUPING
+===================== */
+      .cert-year {
+        margin-top: 28px;
+      }
+
+      .cert-year h4 {
+        margin: 0 0 14px;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .cert-year h4::before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      }
+
+      /* =====================
+         RESUME MODAL
+      ====================== */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+      }
+
+      .modal-content {
+        width: min(900px, 94%);
+        height: 85vh;
+        background: var(--card);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
       }
     </style>
   </head>
+
   <body>
+    <!-- HEADER -->
     <header>
       <div class="header-inner">
         <div class="brand">
           <div class="logo">RP</div>
-          <div class="title">
-            <h1>Rasika Purohit</h1>
-            <p>Python Developer • Backend Developer • Mumbai</p>
+          <div>
+            <strong>Rasika Purohit</strong>
+            <div class="muted">Python Backend Developer • Mumbai</div>
           </div>
         </div>
 
-        <nav aria-label="Primary">
+        <nav>
           <a href="#about">About</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
+          <a href="#certifications">Certifications</a>
         </nav>
 
-        <!-- CTA button with animation + action -->
-        <button id="resumeBtn" class="cta" title="Download Resume">
-          <span class="icon">⇩</span>
-          <span>Download Resume</span>
-        </button>
+        <div class="actions">
+          <button class="toggle" id="themeToggle">☀️</button>
+          <button class="cta" id="resumeOpen">📄 Resume</button>
+        </div>
       </div>
     </header>
 
+    <!-- MAIN -->
     <main>
       <section>
-        <article class="card fade-in-up" id="about">
-          <div class="hero">
-            <div class="avatar">RP</div>
-            <div>
-              <h2>About</h2>
-              <p>
-                I am Rasika Purohit — a backend-focused Python developer with
-                experience in building secure, maintainable systems. I enjoy
-                automation, system design, and exploring security best
-                practices.
-              </p>
+        <div class="card" id="about">
+          <h2>About</h2>
+          <p class="muted">
+            I am Rasika Purohit — a backend-focused Python developer with
+            experience in building secure, maintainable systems. I enjoy
+            automation, system design, and exploring security best practices
+          </p>
+        </div>
 
-            </div>
-          </div>
-
-          
-
-        <article
-          class="card fade-in-up section"
-          id="experience"
-          style="animation-delay: 0.06s"
-        >
+        <div class="card" id="experience">
           <h3>Work Experience</h3>
-
           <div class="list-item">
-            <div class="left">
-              <div class="role">Analyst</div>
-              <div class="org">Jio Haptik Technologies Pvt. Ltd.</div>
-            </div>
-            <div class="right">2019 – 2021</div>
-          </div>
-
-          <div class="list-item">
-            <div class="left">
-              <div class="role">Executive</div>
-              <div class="org">IDBI Intech Pvt. Ltd.</div>
-            </div>
-            <div class="right">2022 – 2025</div>
-          </div>
-
-          <div class="list-item">
-            <div class="left">
-              <div class="role">Python Developer</div>
-              <div class="org">Safran India Pvt. Ltd.</div>
-            </div>
-            <div class="right">2025 – Present</div>
-          </div>
-        </article>
-
-        <article
-          class="card fade-in-up section"
-          id="education"
-          style="animation-delay: 0.12s"
-        >
-          <h3>Education</h3>
-
-          <div class="list-item">
-            <div class="left">
-              <div class="role">B.Sc. in Information Technology</div>
-              <div class="org">University of Mumbai</div>
-            </div>
-            <div class="right">2015 – 2018</div>
-          </div>
-
-          <div class="list-item">
-            <div class="left">
-              <div class="role">PG Diploma in Information Security</div>
-              <div class="org">University of Glasgow</div>
-            </div>
-            <div class="right">2018 – 2019</div>
-          </div>
-
-          <div class="list-item">
-            <div class="left">
-              <div class="role">Master of Computer Applications</div>
-              <div class="org">University of Mumbai</div>
-            </div>
-            <div class="right">2022 – 2025</div>
-          </div>
-        </article>
-
-        <article
-          class="card fade-in-up section"
-          id="skills"
-          style="animation-delay: 0.18s"
-        >
-          <h3>Skills</h3>
-          <div style="margin-top: 10px" class="chips">
-            <div class="chip">Python</div>
-            <div class="chip">FastAPI</div>
-            <div class="chip">Django</div>
-            <div class="chip">Flask</div>
-            <div class="chip">JavaScript</div>
-            <div class="chip">Node.js</div>
-            <div class="chip">ReactJS</div>
-            <div class="chip">Docker</div>
-            <div class="chip">Kubernetes</div>
-            <div class="chip">AWS</div>
-            <div class="chip">REST API Design</div>
-            <div class="chip">Security Concepts</div>
-            <div class="chip">SQL</div>
-            <div class="chip">MongoDB</div>
-            <div class="chip">PostgreSQL</div>           
-            <div class="chip">Oracle</div>           
-            <div class="chip">System Design</div>
-            <div class="chip">Automation</div>
-          </div>
-        </article>
-
-        <article
-          class="card fade-in-up section"
-          id="projects"
-          style="animation-delay: 0.22s"
-        >
-          <h3>Projects</h3>
-          <p class="muted">
-            Below are a few representative projects — links go to your GitHub
-            account (rasikapurohit).
-          </p>
-
-          <!-- Project 1 -->
-          <div class="project" style="margin-top: 12px">
             <div>
-              <div class="meta">Machine Learning Analysis Suite</div>
-              <small
-                >A set of supervised learning experiments and notebooks that
-                demonstrate preprocessing, model training, and evaluation using
-                scikit-learn and pandas.</small
-              >
-              <div class="badges">
-                <span class="badge">Python</span>
-                <span class="badge">scikit-learn</span>
-                <span class="badge">Pandas</span>
-                <a
-                  class="repo"
-                  href="https://github.com/rasikapurohit/MachineLearningSem1"
-                  target="_blank"
-                  rel="noopener"
-                  >github.com/rasikapurohit/MachineLearningSem1</a
-                >
-              </div>
+              <strong>Python Developer</strong>
+              <div class="muted">Safran India</div>
             </div>
-            <div class="muted">Python · scikit-learn</div>
+            <div class="muted">2025 – Present</div>
           </div>
-
-          <!-- Project 2 -->
-          <div class="project" style="margin-top: 12px">
+          <div class="list-item">
             <div>
-              <div class="meta">Work Report Automation Tool</div>
-              <small
-                >A compact browser tool to simplify daily work-logging and
-                report generation built with vanilla JavaScript and thoughtful
-                UI patterns.</small
-              >
-              <div class="badges">
-                <span class="badge">JavaScript</span>
-                <span class="badge">UI</span>
-                <a
-                  class="repo"
-                  href="https://github.com/rasikapurohit/workreport"
-                  target="_blank"
-                  rel="noopener"
-                  >github.com/rasikapurohit/workreport</a
-                >
-              </div>
+              <strong>Executive</strong>
+              <div class="muted">IDBI Intech</div>
             </div>
-            <div class="muted">JavaScript · HTML/CSS</div>
+            <div class="muted">2022 – 2025</div>
           </div>
-
-          <!-- Project 3 -->
-          <div class="project" style="margin-top: 12px">
+          <div class="list-item">
             <div>
-              <div class="meta">Personal Portfolio (HTML/CSS)</div>
-              <small
-                >A responsive static portfolio example demonstrating layouts,
-                accessibility-friendly markup, and modular styles.</small
-              >
-              <div class="badges">
-                <span class="badge">HTML</span>
-                <span class="badge">CSS</span>
-                <span class="badge">Responsive</span>
-                <a
-                  class="repo"
-                  href="https://github.com/rasikapurohit/HTMLPortfolioProject"
-                  target="_blank"
-                  rel="noopener"
-                  >github.com/rasikapurohit/HTMLPortfolioProject</a
-                >
-              </div>
+              <strong>Analyst</strong>
+              <div class="muted">Jio Haptik</div>
             </div>
-            <div class="muted">HTML · CSS · JavaScript</div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="project" style="margin-top: 12px">
-            <div>
-              <div class="meta">IMAD App (learning project)</div>
-              <small
-                >A course-driven web application built during the IMAD program.
-                Shows routing, templating and server-side logic.</small
-              >
-              <div class="badges">
-                <span class="badge">Node.js</span>
-                <span class="badge">Express</span>
-                <a
-                  class="repo"
-                  href="https://github.com/rasikapurohit/imad-app"
-                  target="_blank"
-                  rel="noopener"
-                  >github.com/rasikapurohit/imad-app</a
-                >
-              </div>
-            </div>
-            <div class="muted">JavaScript · Node.js</div>
-          </div>
-        </article>
-      </section>
-
-      <!-- Right column -->
-      <aside class="right-col">
-        <div class="card fade-in-up" style="animation-delay: 0.1s">
-          <h3>Quick Info</h3>
-          <p class="muted">
-            Based in Mumbai • Available for new roles • Open to remote/onsite
-          </p>
-          <p style="margin-top: 10px">
-            <strong>GitHub:</strong>
-            <a
-              href="https://github.com/rasikapurohit"
-              target="_blank"
-              rel="noopener"
-              >github.com/rasikapurohit</a
-            >
-          </p>
-          <div style="margin-top: 12px" class="edu-logos">
-            <!-- If you have SVG/logo images, drop them in and update src -->
-            <img src="" alt="" style="visibility: hidden" />
+            <div class="muted">2019 – 2021</div>
           </div>
         </div>
+
+        <div class="card" id="education">
+          <h3>Education</h3>
+          <div class="list-item">
+            <strong>MCA — University of Mumbai</strong>
+            <span class="muted">2022 – 2025</span>
+          </div>
+          <div class="list-item">
+            <strong>PG Diploma — Information Security</strong>
+            <span class="muted">2018 – 2019</span>
+          </div>
+          <div class="list-item">
+            <strong>B.Sc. IT</strong>
+            <span class="muted">2015 – 2018</span>
+          </div>
+        </div>
+
+        <div class="card" id="skills">
+          <h3>Skills</h3>
+
+          <!-- Backend -->
+          <div class="skill-group">
+            <h4>Backend Development</h4>
+            <div class="chips">
+              <span class="chip">Python</span>
+              <span class="chip">FastAPI</span>
+              <span class="chip">Django</span>
+              <span class="chip">PHP</span>
+              <span class="chip">JSP</span>
+              <span class="chip">REST API Design</span>
+              <span class="chip">Automation</span>
+              <span class="chip">Docker</span>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="skill-group">
+            <h4>Frontend & JavaScript</h4>
+            <div class="chips">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">Bootstrap</span>
+              <span class="chip">ReactJS</span>
+              <span class="chip">Node.js</span>
+            </div>
+          </div>
+
+          <!-- DevOps / Cloud -->
+          <div class="skill-group">
+            <h4>DevOps & Cloud</h4>
+            <div class="chips">
+              <span class="chip">Docker</span>
+              <span class="chip">Kubernetes</span>
+              <span class="chip">AWS</span>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="skill-group">
+            <h4>Databases</h4>
+            <div class="chips">
+              <span class="chip">SQL</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">MongoDB</span>
+              <span class="chip">Oracle</span>
+            </div>
+          </div>
+
+          <!-- Architecture & Security -->
+          <div class="skill-group">
+            <h4>Architecture & Security</h4>
+            <div class="chips">
+              <span class="chip">System Design</span>
+              <span class="chip">Security Concepts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="card" id="projects">
+          <h3>Projects</h3>
+          <div class="project">
+            <strong>Machine Learning Analysis Suite</strong>
+            <p class="muted">Python • scikit-learn</p>
+          </div>
+          <div class="project">
+            <strong>Work Report Automation Tool</strong>
+            <p class="muted">JavaScript • HTML • CSS</p>
+          </div>
+        </div>
+
+        <div class="card" id="certifications">
+          <h3>Certifications</h3>
+
+          <div class="cert-grid">
+            <div
+              class="cert-card"
+              data-img="assets/certificates/UC-98dcdd55-df0c-46e5-9add-c73eff78bb58.pdf"
+              data-title="FastAPI - The Complete Course 2026 (Beginner + Advanced)"
+              data-source="Udemy"
+            >
+              <img
+                src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png"
+                alt="FastAPI Certificate"
+              />
+              <div class="cert-caption">
+                <strong
+                  >FastAPI - The Complete Course 2026 (Beginner +
+                  Advanced)</strong
+                >
+                <span>Udemy</span>
+              </div>
+            </div>
+
+            <div
+              class="cert-card"
+              data-img="assets/certificates/Cloud Computing.pdf"
+              data-title="Cloud Computing"
+              data-source="NPTEL - IIT Madras"
+            >
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_sRo5NEMP5zaR3_zi3vhtirpmKTSCHrGTw&s"
+                alt="Cloud Computing Certificate"
+              />
+
+              <div class="cert-caption">
+                <strong>Cloud Computing</strong>
+                <span>NPTEL - IIT Madras</span>
+              </div>
+            </div>
+
+            <div
+              class="cert-card"
+              data-title="Blockchain and it's Applications"
+              data-source="Online Certification"
+              data-img="./assets/certificates/Blockchain and its Applications.pdf"
+            >
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_sRo5NEMP5zaR3_zi3vhtirpmKTSCHrGTw&s"
+                alt="Blockchain Certificate"
+              />
+              <div class="cert-caption">
+                <strong>Blockchain and it's Applications</strong>
+                <span>NPTEL</span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <div class="card" id="certifications">
+          <h3>Certifications</h3>
+
+          <!-- ===== 2025 ===== -->
+          <div class="cert-year">
+            <h4>2025</h4>
+
+            <div class="cert-grid">
+              <!-- FastAPI -->
+              <div
+                class="cert-card"
+                data-img="assets/certificates/UC-98dcdd55-df0c-46e5-9add-c73eff78bb58.pdf"
+                data-title="FastAPI - The Complete Course 2026 (Beginner + Advanced)"
+                data-source="Udemy"
+              >
+                <img
+                  src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png"
+                  alt="FastAPI Certificate"
+                />
+                <div class="cert-caption">
+                  <strong>
+                    FastAPI – The Complete Course 2026 (Beginner + Advanced)
+                  </strong>
+                  <span>Udemy</span>
+                </div>
+              </div>
+              <!-- add for linkedin learing node essedtial training -->
+              <div
+                class="cert-card"
+                data-title="Node.js Essential Training"
+                data-source="LinkedIn Learning"
+                data-img = "/assets/certificates/CertificateOfCompletion_Node.js Essential Training.pdf"
+              >
+
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/919/919825.png"
+                  alt="Node.js Certificate"
+                />
+                <div class="cert-caption">
+                  <strong>Node.js Essential Training</strong>
+                  <span>LinkedIn Learning</span>
+                </div>
+
+            </div>
+          </div>
+
+          <!-- ===== 2024 ===== -->
+          <div class="cert-year">
+            <h4>2024</h4>
+
+            <div class="cert-grid">
+              <!-- Cloud Computing -->
+              <div
+                class="cert-card"
+                data-img="assets/certificates/Cloud Computing.pdf"
+                data-title="Cloud Computing"
+                data-source="NPTEL – IIT Madras"
+              >
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_sRo5NEMP5zaR3_zi3vhtirpmKTSCHrGTw&s"
+                  alt="Cloud Computing Certificate"
+                />
+                <div class="cert-caption">
+                  <strong>Cloud Computing</strong>
+                  <span>NPTEL – IIT Madras</span>
+                </div>
+              </div>
+
+              <!-- Blockchain -->
+              <div
+                class="cert-card"
+                data-img="./assets/certificates/Blockchain and its Applications.pdf"
+                data-title="Blockchain and its Applications"
+                data-source="NPTEL"
+              >
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_sRo5NEMP5zaR3_zi3vhtirpmKTSCHrGTw&s"
+                  alt="Blockchain Certificate"
+                />
+                <div class="cert-caption">
+                  <strong>Blockchain and its Applications</strong>
+                  <span>NPTEL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+          <h3>Quick Info</h3>
+          <p class="muted">Based in Mumbai • Open to backend roles</p>
+          <!-- add small github logo -->
+          <img
+            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+            alt="GitHub Logo"
+            style="width: 20px; vertical-align: middle; margin-right: 5px"
+          />
+          <a href="https://github.com/rasikapurohit" target="_blank"
+            >github.com/rasikapurohit</a
+          >
+          <br />
+          <!-- add small linkedin icon and link -->
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+            alt="LinkedIn Logo"
+            style="width: 20px; vertical-align: middle; margin-right: 5px"
+          />
+          <a href="https://www.linkedin.com/in/rasikapurohit" target="_blank"
+            >linkedin.com/in/rasikapurohit</a
+          >
+        </div>
+        <a href="https://roadmap.sh"
+          ><img
+            src="https://roadmap.sh/card/tall/645518da05999de060bb0c1a?variant=dark&roadmaps=python%2Cjavascript%2Capi-design%2Cbackend"
+            alt="roadmap.sh"
+        /></a>
       </aside>
     </main>
 
-    <!-- Toast -->
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <!-- RESUME MODAL -->
+    <div class="modal" id="resumeModal">
+      <div class="modal-content">
+        <iframe src="assets/rasika_purohit.pdf"></iframe>
+      </div>
+    </div>
+
+    <div class="cert-modal" id="certModal">
+      <div class="cert-modal-content">
+        <iframe id="certModalFrame" style="display: none"></iframe>
+
+        <img id="certModalImg" style="display: none" />
+
+        <div class="cert-modal-caption">
+          <strong id="certModalTitle"></strong>
+          <div class="muted" id="certModalSource"></div>
+        </div>
+      </div>
+    </div>
 
     <script>
-      /* -------------------------
-     Smooth scroll with header offset (for sticky header)
-     ------------------------- */
-      (function () {
-        const header = document.querySelector("header");
-        const headerHeight = () => header.getBoundingClientRect().height;
-        // intercept anchor clicks on same page and apply offset
-        document.querySelectorAll('a[href^="#"]').forEach((a) => {
-          a.addEventListener("click", function (e) {
-            const targetId = this.getAttribute("href").slice(1);
-            const target = document.getElementById(targetId);
-            if (!target) return;
-            e.preventDefault();
-            const top =
-              target.getBoundingClientRect().top +
-              window.scrollY -
-              headerHeight() -
-              14;
-            window.scrollTo({ top, behavior: "smooth" });
-          });
+      /* Light / Dark toggle (dark default) */
+      const toggle = document.getElementById("themeToggle");
+      toggle.onclick = () => {
+        document.body.classList.toggle("light");
+        toggle.textContent = document.body.classList.contains("light")
+          ? "🌙"
+          : "☀️";
+      };
+
+      /* Resume modal */
+      const modal = document.getElementById("resumeModal");
+      document.getElementById("resumeOpen").onclick = () =>
+        (modal.style.display = "flex");
+      modal.onclick = () => (modal.style.display = "none");
+    </script>
+    <script>
+      const certModal = document.getElementById("certModal");
+      const certImg = document.getElementById("certModalImg");
+      const certFrame = document.getElementById("certModalFrame");
+      const certTitle = document.getElementById("certModalTitle");
+      const certSource = document.getElementById("certModalSource");
+
+      document.querySelectorAll(".cert-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          const file = card.dataset.img;
+
+          // Reset
+          certImg.style.display = "none";
+          certFrame.style.display = "none";
+          certImg.src = "";
+          certFrame.src = "";
+
+          certTitle.textContent = card.dataset.title;
+          certSource.textContent = card.dataset.source;
+
+          if (file.endsWith(".pdf")) {
+            certFrame.src = file;
+            certFrame.style.display = "block";
+          } else {
+            certImg.src = file;
+            certImg.style.display = "block";
+          }
+
+          certModal.style.display = "flex";
         });
-      })();
+      });
 
-      /* -------------------------
-     Button click animation + resume download action
-     - adds a quick pop animation
-     - creates a small downloadable resume file (placeholder)
-     - shows toast feedback
-     ------------------------- */
-      (function () {
-        const btn = document.getElementById("resumeBtn");
-        const toast = document.getElementById("toast");
-
-        function showToast(text, ms = 2500) {
-          toast.textContent = text;
-          toast.classList.add("show");
-          clearTimeout(toast._t);
-          toast._t = setTimeout(() => toast.classList.remove("show"), ms);
+      // Close on background click
+      certModal.addEventListener("click", (e) => {
+        if (e.target === certModal) {
+          certModal.style.display = "none";
+          certFrame.src = "";
+          certImg.src = "";
         }
+      });
 
-        function triggerAnimation(el) {
-          el.classList.remove("btn-click-anim");
-          // force reflow to restart animation
-          void el.offsetWidth;
-          el.classList.add("btn-click-anim");
+      // ESC key close
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          certModal.style.display = "none";
+          certFrame.src = "";
+          certImg.src = "";
         }
-
-        function downloadResume() {
-          const fileUrl = "assets/rasika_purohit.pdf"; // relative path to your PDF file
-          const filename = "Rasika_Purohit_Resume.pdf";
-
-          const a = document.createElement("a");
-          a.href = fileUrl;
-          a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        }
-
-        btn.addEventListener("click", async function (e) {
-          triggerAnimation(this);
-          showToast("Preparing resume...");
-          // small delay to show animation then download
-          setTimeout(() => {
-            downloadResume();
-            showToast("Resume downloaded ✓", 2200);
-          }, 320);
-        });
-      })();
-
-      /* -------------------------
-     Simple progressive reveal for .fade-in-up elements
-     ------------------------- */
-      (function () {
-        document.querySelectorAll(".fade-in-up").forEach((el, i) => {
-          el.style.animationDelay = i * 80 + "ms";
-          el.style.animationFillMode = "both";
-        });
-      })();
+      });
     </script>
   </body>
 </html>
