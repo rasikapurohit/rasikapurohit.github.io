@@ -132,7 +132,30 @@
         text-decoration: none;
         font-weight: 600;
         color: white;
+        position: relative;
+  transition: transform 0.15s ease, opacity 0.15s ease;
       }
+
+
+
+nav a.nav-click {
+  animation: navClick 0.35s ease;
+}
+
+@keyframes navClick {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.92);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 
       .actions {
         display: flex;
@@ -492,15 +515,15 @@
         <div class="card" id="education">
           <h3>Education</h3>
           <div class="list-item">
-            <strong>MCA — University of Mumbai</strong>
+            <strong>MCA — University of Mumbai, India</strong>
             <span class="muted">2022 – 2025</span>
           </div>
           <div class="list-item">
-            <strong>PG Diploma — Information Security</strong>
+            <strong>PG Diploma in Information Security — University of Glasgow, UK</strong>
             <span class="muted">2018 – 2019</span>
           </div>
           <div class="list-item">
-            <strong>B.Sc. IT</strong>
+            <strong>B.Sc. IT — University of Mumbai, India</strong>
             <span class="muted">2015 – 2018</span>
           </div>
         </div>
@@ -567,75 +590,6 @@
           </div>
         </div>
 
-        <!-- <div class="card" id="projects">
-          <h3>Projects</h3>
-          <div class="project">
-            <strong>Machine Learning Analysis Suite</strong>
-            <p class="muted">Python • scikit-learn</p>
-          </div>
-          <div class="project">
-            <strong>Work Report Automation Tool</strong>
-            <p class="muted">JavaScript • HTML • CSS</p>
-          </div>
-        </div>
-
-        <div class="card" id="certifications">
-          <h3>Certifications</h3>
-
-          <div class="cert-grid">
-            <div
-              class="cert-card"
-              data-img="assets/certificates/UC-98dcdd55-df0c-46e5-9add-c73eff78bb58.pdf"
-              data-title="FastAPI - The Complete Course 2026 (Beginner + Advanced)"
-              data-source="Udemy"
-            >
-              <img
-                src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png"
-                alt="FastAPI Certificate"
-              />
-              <div class="cert-caption">
-                <strong
-                  >FastAPI - The Complete Course 2026 (Beginner +
-                  Advanced)</strong
-                >
-                <span>Udemy</span>
-              </div>
-            </div>
-
-            <div
-              class="cert-card"
-              data-img="assets/certificates/Cloud Computing.pdf"
-              data-title="Cloud Computing"
-              data-source="NPTEL - IIT Madras"
-            >
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_sRo5NEMP5zaR3_zi3vhtirpmKTSCHrGTw&s"
-                alt="Cloud Computing Certificate"
-              />
-
-              <div class="cert-caption">
-                <strong>Cloud Computing</strong>
-                <span>NPTEL - IIT Madras</span>
-              </div>
-            </div>
-
-            <div
-              class="cert-card"
-              data-title="Blockchain and it's Applications"
-              data-source="Online Certification"
-              data-img="./assets/certificates/Blockchain and its Applications.pdf"
-            >
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_sRo5NEMP5zaR3_zi3vhtirpmKTSCHrGTw&s"
-                alt="Blockchain Certificate"
-              />
-              <div class="cert-caption">
-                <strong>Blockchain and it's Applications</strong>
-                <span>NPTEL</span>
-              </div>
-            </div>
-          </div>
-        </div> -->
         <div class="card" id="certifications">
           <h3>Certifications</h3>
 
@@ -671,11 +625,30 @@
               >
 
                 <img
-                  src="https://cdn-icons-png.flaticon.com/512/919/919825.png"
+                  src="./assets/node-js.png"
                   alt="Node.js Certificate"
                 />
                 <div class="cert-caption">
                   <strong>Node.js Essential Training</strong>
+                  <span>LinkedIn Learning</span>
+                </div>
+
+            </div>
+            <div
+                class="cert-card"
+                data-title="Learning npm: A Package Manager"
+                data-source="LinkedIn Learning"
+                data-img = "/assets/certificates/CertificateOfCompletion_Learning npm A Package Manager.pdf"
+              >
+
+              <!-- add npm icon -->
+
+                <img
+                  src="./assets/node-js.png"
+                  alt="NPM Certificate"
+                />
+                <div class="cert-caption">
+                  <strong>Learning npm: A Package Manager</strong>
                   <span>LinkedIn Learning</span>
                 </div>
 
@@ -843,5 +816,16 @@
         }
       });
     </script>
+    <script>
+  /* Navbar click animation */
+  document.querySelectorAll("nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      link.classList.remove("nav-click");
+      void link.offsetWidth; // force reflow to restart animation
+      link.classList.add("nav-click");
+    });
+  });
+</script>
+
   </body>
 </html>
