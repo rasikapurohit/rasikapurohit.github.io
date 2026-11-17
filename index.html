@@ -1,831 +1,762 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Rasika Purohit • Python Backend Developer</title>
-
-    <!-- SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Rasika Purohit — Backend-focused Python Developer from Mumbai. Experienced in FastAPI, Django, system design, and automation."
+      content="Rasika Purohit is a Python backend developer focused on secure APIs, automation, and thoughtful system design."
     />
-    <meta name="author" content="Rasika Purohit" />
-
-    <!-- OpenGraph -->
-    <meta property="og:title" content="Rasika Purohit • Portfolio" />
-    <meta
-      property="og:description"
-      content="Backend Python Developer | Secure & Scalable Systems"
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
-    />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
-    />
-
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Rasika Purohit | Python Backend Developer</title>
+    <link rel="icon" type="image/png" href="./assets/coder.png" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
-
-      /* =====================
-         COLOR SYSTEM
-      ====================== */
-
-      /* LIGHT (optional) */
+      @font-face {
+        font-family: "SFRounded";
+        src: url("./assets/SF-Pro-Rounded-Semibold.otf") format("opentype");
+        font-weight: 600;
+        font-display: swap;
+      }
       :root {
-        --bg: #f8fafc;
-        --card: #ffffff;
-        --text: #0f172a;
-        --muted: #64748b;
-        --border: rgba(15, 23, 42, 0.08);
-        --accent1: #a5b4fc;
-        --accent2: #f0abfc;
-        --accent3: #fda4af;
+        --ink: #17211f;
+        --muted: #66716d;
+        --paper: #f3f0e9;
+        --card: #fbfaf6;
+        --line: #d9ddd5;
+        --green: #2e6b5c;
+        --green-dark: #1d483e;
+        --mint: #dce9df;
+        --coral: #e68165;
+        --yellow: #f1d588;
+        --shadow: 0 20px 60px rgba(39, 55, 49, 0.09);
       }
-
-      /* DARK (DEFAULT) */
-      body {
-        --bg: #0b1020;
-        --card: #121833;
-        --text: #ffffff;
-        --muted: #c7c9d1;
-        --border: rgba(255, 255, 255, 0.12);
-        --accent1: #6366f1;
-        --accent2: #8b5cf6;
-        --accent3: #ec4899;
-      }
-
-      body.light {
-        --bg: #f8fafc;
-        --card: #ffffff;
-        --text: #0f172a;
-        --muted: #64748b;
-        --border: rgba(15, 23, 42, 0.08);
-      }
-
       * {
         box-sizing: border-box;
       }
-
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         margin: 0;
-        font-family: Inter, system-ui, sans-serif;
-        background: var(--bg);
-        color: var(--text);
+        color: var(--ink);
+        background: var(--paper);
+        font-family: "SFRounded", Georgia, serif;
         line-height: 1.55;
-        transition: background 0.3s, color 0.3s;
       }
-
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.28;
+        background-image: radial-gradient(#b1b9ad 0.7px, transparent 0.7px);
+        background-size: 13px 13px;
+        mask-image: linear-gradient(to bottom, black, transparent 75%);
+      }
       a {
         color: inherit;
+        text-decoration: none;
       }
-
-      /* =====================
-         HEADER / BANNER
-      ====================== */
+      .wrap {
+        width: min(1160px, calc(100% - 48px));
+        margin: 0 auto;
+      }
       header {
-        background: linear-gradient(135deg, #1e1b4b, #312e81, #4a044e);
-        color: white;
-        padding: 22px 20px;
         position: sticky;
         top: 0;
-        z-index: 50;
+        z-index: 10;
+        border-bottom: 1px solid rgba(23, 33, 31, 0.1);
+        background: rgba(243, 240, 233, 0.86);
+        backdrop-filter: blur(16px);
       }
-
-      .header-inner {
-        max-width: 1100px;
-        margin: auto;
+      .nav {
+        min-height: 78px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-        flex-wrap: wrap;
+        gap: 24px;
       }
-
-      .brand {
+      .mark {
         display: flex;
-        gap: 14px;
         align-items: center;
+        gap: 11px;
+        font-weight: 600;
       }
-
-      .logo {
-        width: 56px;
-        height: 56px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.18);
+      .mark-box {
+        width: 35px;
+        height: 35px;
         display: grid;
         place-items: center;
-        font-weight: 800;
+        color: var(--card);
+        background: var(--green);
+        border-radius: 9px 9px 9px 2px;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
       }
-
-      nav a {
-        margin-right: 14px;
-        text-decoration: none;
-        font-weight: 600;
-        color: white;
-        position: relative;
-  transition: transform 0.15s ease, opacity 0.15s ease;
-      }
-
-
-
-nav a.nav-click {
-  animation: navClick 0.35s ease;
-}
-
-@keyframes navClick {
-  0% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(0.92);
-    opacity: 0.85;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-
-      .actions {
+      .nav-links {
         display: flex;
-        gap: 10px;
-      }
-
-      button {
-        border: none;
-        border-radius: 12px;
-        padding: 10px 14px;
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .cta {
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-      }
-
-      .toggle {
-        background: rgba(255, 255, 255, 0.15);
-        color: white;
-      }
-
-      /* =====================
-         LAYOUT
-      ====================== */
-      main {
-        max-width: 1100px;
-        margin: 28px auto;
-        padding: 0 20px 80px;
-        display: grid;
-        grid-template-columns: 1fr 340px;
-        gap: 28px;
-      }
-
-      @media (max-width: 900px) {
-        main {
-          grid-template-columns: 1fr;
-        }
-        nav {
-          display: none;
-        }
-      }
-
-      .card {
-        background: var(--card);
-        border-radius: 16px;
-        padding: 22px;
-        border: 1px solid var(--border);
-        margin-bottom: 18px;
-      }
-
-      h2,
-      h3 {
-        margin-top: 0;
-        color: var(--text);
-      }
-
-      .muted {
+        gap: 26px;
         color: var(--muted);
-        font-size: 14px;
+        font-size: 0.92rem;
       }
-
-      /* =====================
-         LIST ITEMS
-      ====================== */
-      .list-item {
+      .nav-links a:hover {
+        color: var(--green-dark);
+      }
+      .nav-cta {
+        padding: 10px 17px;
+        border: 1px solid var(--green);
+        border-radius: 999px;
+        color: var(--green-dark);
+        font-size: 0.88rem;
+      }
+      .nav-cta:hover {
+        color: var(--card);
+        background: var(--green);
+      }
+      main {
+        position: relative;
+        overflow: hidden;
+      }
+      .hero {
+        min-height: 650px;
+        padding: 115px 0 92px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 70px;
+      }
+      .kicker {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--green);
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .kicker::before {
+        content: "";
+        width: 30px;
+        height: 1px;
+        background: var(--coral);
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+      h1 {
+        max-width: 700px;
+        margin: 20px 0 23px;
+        font-family: Georgia, serif;
+        font-size: clamp(3.8rem, 8vw, 7.8rem);
+        font-weight: 400;
+        letter-spacing: -0.08em;
+        line-height: 0.87;
+      }
+      h1 em {
+        color: var(--green);
+        font-style: normal;
+      }
+      .hero-copy > p {
+        max-width: 510px;
+        color: var(--muted);
+        font-size: 1.12rem;
+      }
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 32px;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 13px 20px;
+        border-radius: 5px;
+        border: 1px solid var(--green);
+        font-size: 0.92rem;
+      }
+      .button.primary {
+        color: var(--card);
+        background: var(--green);
+        box-shadow: 7px 7px 0 var(--yellow);
+      }
+      .button.primary:hover {
+        transform: translate(2px, 2px);
+        box-shadow: 4px 4px 0 var(--yellow);
+      }
+      .button.text {
+        border-color: transparent;
+        color: var(--green-dark);
+        padding-left: 3px;
+      }
+      .button.text span {
+        transition: transform 0.2s ease;
+      }
+      .button.text:hover span {
+        transform: translateX(5px);
+      }
+      .hero-art {
+        position: relative;
+        min-height: 420px;
+        display: grid;
+        place-items: center;
+      }
+      .hero-art::before {
+        content: "";
+        position: absolute;
+        width: 340px;
+        height: 340px;
+        border-radius: 50%;
+        background: var(--mint);
+        transform: rotate(-12deg);
+      }
+      .portrait {
+        position: relative;
+        width: 270px;
+        height: 350px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 135px 135px 12px 12px;
+        filter: saturate(0.82);
+        box-shadow: 18px 20px 0 var(--coral);
+      }
+      .art-note {
+        position: absolute;
+        right: 0;
+        bottom: 30px;
+        max-width: 145px;
+        padding: 13px 15px;
+        background: var(--yellow);
+        border-radius: 2px;
+        font-size: 0.84rem;
+        line-height: 1.25;
+        transform: rotate(4deg);
+      }
+      .scroll-note {
+        position: absolute;
+        left: 24px;
+        bottom: 26px;
+        color: var(--muted);
+        font-size: 0.73rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
+      }
+      .section {
+        padding: 90px 0;
+        border-top: 1px solid var(--line);
+      }
+      .section-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 42px;
+      }
+      .section-heading h2 {
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: clamp(2.4rem, 5vw, 4.3rem);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.95;
+      }
+      .section-heading p {
+        max-width: 300px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.93rem;
+      }
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+      }
+      .project {
+        min-height: 340px;
+        padding: 27px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        overflow: hidden;
+        background: var(--card);
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .project:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow);
+      }
+      .project:nth-child(1) {
+        grid-column: span 7;
+        background: var(--green);
+        color: var(--card);
+      }
+      .project:nth-child(2) {
+        grid-column: span 5;
+        background: #e7ddd0;
+      }
+      .project:nth-child(3) {
+        grid-column: span 5;
+        background: var(--yellow);
+      }
+      .project:nth-child(4) {
+        grid-column: span 7;
+        background: var(--card);
+      }
+      .project-num {
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        opacity: 0.7;
+      }
+      .project h3 {
+        max-width: 410px;
+        margin: 35px 0 9px;
+        font-family: Georgia, serif;
+        font-size: clamp(1.7rem, 3vw, 2.8rem);
+        font-weight: 400;
+        letter-spacing: -0.06em;
+        line-height: 0.98;
+      }
+      .project p {
+        max-width: 420px;
+        margin-bottom: 20px;
+        color: inherit;
+        opacity: 0.75;
+        font-size: 0.93rem;
+      }
+      .project-footer {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         gap: 12px;
-        padding: 12px 0;
-        border-top: 1px solid var(--border);
+        font-size: 0.77rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
-
-      .list-item:first-child {
-        border-top: none;
-      }
-
-      /* =====================
-         SKILLS
-      ====================== */
-      .skill {
-        margin-bottom: 14px;
-      }
-
-      .bar {
-        height: 8px;
-        background: rgba(255, 255, 255, 0.18);
-        border-radius: 999px;
-        overflow: hidden;
-        margin-top: 6px;
-      }
-
-      .fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      }
-
-      /* =====================
-         PROJECTS
-      ====================== */
-      .project {
-        padding: 14px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        margin-top: 12px;
-      }
-      /* =====================
-   SKILLS — CHIPS STYLE
-===================== */
-      .skill-group {
-        margin-top: 18px;
-      }
-
-      .skill-group h4 {
-        margin: 0 0 10px;
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--text);
-      }
-
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .chip {
-        padding: 8px 12px;
-        font-size: 13px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid var(--border);
-        color: var(--text);
-        transition: transform 0.15s ease, background 0.15s ease;
-      }
-
-      body.light .chip {
-        background: #f8fafc;
-      }
-
-      .chip:hover {
-        transform: translateY(-2px);
-        background: rgba(255, 255, 255, 0.14);
-      }
-
-      /* =====================
-   CERTIFICATIONS GALLERY
-===================== */
-      .cert-grid {
+      .arrow {
+        width: 36px;
+        height: 36px;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
-        margin-top: 12px;
-      }
-
-      .cert-card {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .cert-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-      }
-
-      .cert-card img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        display: block;
-      }
-
-      .cert-caption {
-        padding: 10px 12px;
-      }
-
-      .cert-caption strong {
-        display: block;
-        font-size: 14px;
-      }
-
-      .cert-caption span {
-        font-size: 12px;
-        color: var(--muted);
-      }
-
-      /* =====================
-   CERT MODAL
-===================== */
-      .cert-modal {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.85);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999; /* 🔥 higher than header */
-      }
-
-      .cert-modal-content {
-        max-width: 90%;
-        max-height: 90%;
-        background: var(--card);
-        border-radius: 16px;
-        padding: 16px;
-      }
-
-      .cert-modal-content img {
-        max-width: 100%;
-        max-height: 70vh;
-        display: block;
-        margin: auto;
-      }
-
-      .cert-modal-caption {
-        margin-top: 12px;
-        text-align: center;
-      }
-
-      .cert-modal-content iframe {
-        width: 100%;
-        height: 70vh;
-        border: none;
-        border-radius: 12px;
-      }
-
-      .cert-card * {
-        pointer-events: none;
-      }
-
-      /* =====================
-   CERTIFICATIONS — YEAR GROUPING
-===================== */
-      .cert-year {
-        margin-top: 28px;
-      }
-
-      .cert-year h4 {
-        margin: 0 0 14px;
-        font-size: 16px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        color: var(--text);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .cert-year h4::before {
-        content: "";
-        width: 14px;
-        height: 14px;
+        place-items: center;
+        border: 1px solid currentColor;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent1), var(--accent2));
+        font-size: 1.1rem;
       }
-
-      /* =====================
-         RESUME MODAL
-      ====================== */
-      .modal {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.75);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 100;
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 90px;
+        align-items: start;
       }
-
-      .modal-content {
-        width: min(900px, 94%);
-        height: 85vh;
-        background: var(--card);
-        border-radius: 16px;
-        overflow: hidden;
+      .about-lead {
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: clamp(1.75rem, 3vw, 3rem);
+        letter-spacing: -0.05em;
+        line-height: 1.05;
       }
-
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
+      .about-body {
+        color: var(--muted);
+        font-size: 1rem;
+      }
+      .about-body p:last-child {
+        margin-bottom: 0;
+      }
+      .capabilities {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0 30px;
+        margin-top: 35px;
+        border-top: 1px solid var(--line);
+      }
+      .capability {
+        padding: 17px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .capability strong {
+        display: block;
+        margin-bottom: 3px;
+        color: var(--green-dark);
+      }
+      .capability span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--ink);
+      }
+      .role {
+        padding: 22px 22px 8px 0;
+        border-right: 1px solid var(--line);
+      }
+      .role:not(:first-child) {
+        padding-left: 22px;
+      }
+      .role:last-child {
+        border-right: 0;
+      }
+      .role-date {
+        color: var(--coral);
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .role h3 {
+        margin: 24px 0 4px;
+        font-size: 1.18rem;
+      }
+      .role p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+      .contact {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 30px;
+        align-items: end;
+        padding: 58px 0 82px;
+      }
+      .contact h2 {
+        max-width: 690px;
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: clamp(2.5rem, 6vw, 5.6rem);
+        font-weight: 400;
+        letter-spacing: -0.08em;
+        line-height: 0.9;
+      }
+      .contact h2 em {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        color: var(--green-dark);
+        font-size: 0.92rem;
+      }
+      .contact-links a {
+        border-bottom: 1px solid var(--green);
+      }
+      footer {
+        padding: 20px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.78rem;
+        display: flex;
+        justify-content: space-between;
+      }
+      @media (max-width: 760px) {
+        .wrap {
+          width: min(100% - 32px, 600px);
+        }
+        .nav {
+          min-height: 68px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .nav-cta {
+          padding: 8px 12px;
+        }
+        .hero {
+          min-height: auto;
+          padding: 80px 0 100px;
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+        h1 {
+          font-size: clamp(3.7rem, 18vw, 6rem);
+        }
+        .hero-art {
+          min-height: 340px;
+        }
+        .portrait {
+          width: 220px;
+          height: 285px;
+        }
+        .hero-art::before {
+          width: 270px;
+          height: 270px;
+        }
+        .art-note {
+          right: 3%;
+          bottom: 5px;
+        }
+        .scroll-note {
+          display: none;
+        }
+        .section {
+          padding: 70px 0;
+        }
+        .section-heading,
+        .contact {
+          display: block;
+        }
+        .section-heading p {
+          margin-top: 16px;
+        }
+        .project-grid {
+          display: block;
+        }
+        .project {
+          min-height: 300px;
+          margin-bottom: 15px;
+        }
+        .about-grid {
+          display: block;
+        }
+        .about-body {
+          margin-top: 35px;
+        }
+        .timeline {
+          display: block;
+        }
+        .role,
+        .role:not(:first-child) {
+          padding: 20px 0;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .role:last-child {
+          border-bottom: 0;
+        }
+        .role h3 {
+          margin-top: 13px;
+        }
+        .contact-links {
+          align-items: flex-start;
+          margin-top: 35px;
+        }
+        footer {
+          gap: 14px;
+          flex-direction: column;
+        }
       }
     </style>
+    +
   </head>
-
+  +
   <body>
-    <!-- HEADER -->
+    +
     <header>
-      <div class="header-inner">
-        <div class="brand">
-          <div class="logo">RP</div>
-          <div>
-            <strong>Rasika Purohit</strong>
-            <div class="muted">Python Backend Developer • Mumbai</div>
-          </div>
-        </div>
-
-        <nav>
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#certifications">Certifications</a>
+      <div class="wrap nav">
+        <a class="mark" href="#top" aria-label="Rasika Purohit home"
+          ><span class="mark-box">RP</span><span>Rasika Purohit</span></a
+        >
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#work">Work</a><a href="#about">About</a
+          ><a href="#journey">Journey</a>
         </nav>
-
-        <div class="actions">
-          <button class="toggle" id="themeToggle">☀️</button>
-          <button class="cta" id="resumeOpen">📄 Resume</button>
-        </div>
+        <a class="nav-cta" href="mailto:rasikapurohit.dev@gmail.com"
+          >Let's talk ↗</a
+        >
       </div>
     </header>
-
-    <!-- MAIN -->
-    <main>
-      <section>
-        <div class="card" id="about">
-          <h2>About</h2>
-          <p class="muted">
-            I am Rasika Purohit — a backend-focused Python developer with
-            experience in building secure, maintainable systems. I enjoy
-            automation, system design, and exploring security best practices
+    +
+    <main id="top">
+      +
+      <section class="wrap hero">
+        <div class="hero-copy">
+          <div class="kicker">Python developer · Mumbai</div>
+          <h1>Building the <em>quiet</em> systems behind big ideas.</h1>
+          <p>
+            Backend engineer focused on secure APIs, useful automation, and
+            software that stays understandable as it grows.
           </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work"
+              >See selected work <span>↘</span></a
+            ><a
+              class="button text"
+              href="./assets/rasika_purohit.pdf"
+              target="_blank"
+              rel="noopener"
+              >View resume <span>↗</span></a
+            >
+          </div>
         </div>
-
-        <div class="card" id="experience">
-          <h3>Work Experience</h3>
-          <div class="list-item">
+        <div class="hero-art">
+          <img
+            class="portrait"
+            src="./assets/girl.png"
+            alt="Illustration of Rasika Purohit working"
+          />
+          <div class="art-note">
+            Turning complex backend problems into clear next steps.
+          </div>
+          <div class="scroll-note">Scroll to explore ↓</div>
+        </div>
+      </section>
+      +
+      <section class="wrap section" id="work">
+        <div class="section-heading">
+          <h2>Selected work</h2>
+          <p>A few problem spaces I enjoy getting my hands dirty with.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project">
             <div>
-              <strong>Python Developer</strong>
-              <div class="muted">Safran India</div>
+              <span class="project-num">01 / API ENGINEERING</span>
+              <h3>Secure API Platform</h3>
+              <p>
+                Designed REST services with FastAPI, access control, and
+                monitoring for secure internal workflows.
+              </p>
             </div>
-            <div class="muted">2025 – Present</div>
-          </div>
-          <div class="list-item">
+            <div class="project-footer">
+              <span>FastAPI · PostgreSQL · Docker</span
+              ><span class="arrow">↗</span>
+            </div>
+          </article>
+          <article class="project">
             <div>
-              <strong>Executive</strong>
-              <div class="muted">IDBI Intech</div>
+              <span class="project-num">02 / AUTOMATION</span>
+              <h3>Automation Engine</h3>
+              <p>
+                Connected cloud services into backend workflows that reduce
+                repetitive operational work.
+              </p>
             </div>
-            <div class="muted">2022 – 2025</div>
-          </div>
-          <div class="list-item">
+            <div class="project-footer">
+              <span>Python · AWS · APIs</span><span class="arrow">↗</span>
+            </div>
+          </article>
+          <article class="project">
             <div>
-              <strong>Analyst</strong>
-              <div class="muted">Jio Haptik</div>
+              <span class="project-num">03 / RELIABILITY</span>
+              <h3>Performance Tuning</h3>
+              <p>
+                Improved response times and service reliability for critical
+                backend systems.
+              </p>
             </div>
-            <div class="muted">2019 – 2021</div>
-          </div>
+            <div class="project-footer">
+              <span>Systems · Observability</span><span class="arrow">↗</span>
+            </div>
+          </article>
+          <article class="project">
+            <div>
+              <span class="project-num">04 / CRAFT</span>
+              <h3>Systems with a human side.</h3>
+              <p>
+                Good engineering is equal parts architecture, communication, and
+                making the next change feel possible.
+              </p>
+            </div>
+            <div class="project-footer">
+              <span>Designing for longevity</span><span class="arrow">↗</span>
+            </div>
+          </article>
         </div>
-
-        <div class="card" id="education">
-          <h3>Education</h3>
-          <div class="list-item">
-            <strong>MCA — University of Mumbai, India</strong>
-            <span class="muted">2022 – 2025</span>
-          </div>
-          <div class="list-item">
-            <strong>PG Diploma in Information Security — University of Glasgow, UK</strong>
-            <span class="muted">2018 – 2019</span>
-          </div>
-          <div class="list-item">
-            <strong>B.Sc. IT — University of Mumbai, India</strong>
-            <span class="muted">2015 – 2018</span>
-          </div>
+      </section>
+      +
+      <section class="wrap section" id="about">
+        <div class="section-heading">
+          <h2>A little context</h2>
+          <p>Curious by default. Practical by choice.</p>
         </div>
-
-        <div class="card" id="skills">
-          <h3>Skills</h3>
-
-          <!-- Backend -->
-          <div class="skill-group">
-            <h4>Backend Development</h4>
-            <div class="chips">
-              <span class="chip">Python</span>
-              <span class="chip">FastAPI</span>
-              <span class="chip">Django</span>
-              <span class="chip">PHP</span>
-              <span class="chip">JSP</span>
-              <span class="chip">REST API Design</span>
-              <span class="chip">Automation</span>
-              <span class="chip">Docker</span>
-            </div>
-          </div>
-
-          <!-- Frontend -->
-          <div class="skill-group">
-            <h4>Frontend & JavaScript</h4>
-            <div class="chips">
-              <span class="chip">HTML</span>
-              <span class="chip">CSS</span>
-              <span class="chip">JavaScript</span>
-              <span class="chip">Bootstrap</span>
-              <span class="chip">ReactJS</span>
-              <span class="chip">Node.js</span>
-            </div>
-          </div>
-
-          <!-- DevOps / Cloud -->
-          <div class="skill-group">
-            <h4>DevOps & Cloud</h4>
-            <div class="chips">
-              <span class="chip">Docker</span>
-              <span class="chip">Kubernetes</span>
-              <span class="chip">AWS</span>
-            </div>
-          </div>
-
-          <!-- Databases -->
-          <div class="skill-group">
-            <h4>Databases</h4>
-            <div class="chips">
-              <span class="chip">SQL</span>
-              <span class="chip">PostgreSQL</span>
-              <span class="chip">MongoDB</span>
-              <span class="chip">Oracle</span>
-            </div>
-          </div>
-
-          <!-- Architecture & Security -->
-          <div class="skill-group">
-            <h4>Architecture & Security</h4>
-            <div class="chips">
-              <span class="chip">System Design</span>
-              <span class="chip">Security Concepts</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" id="certifications">
-          <h3>Certifications</h3>
-
-          <!-- ===== 2025 ===== -->
-          <div class="cert-year">
-            <h4>2025</h4>
-
-            <div class="cert-grid">
-              <!-- FastAPI -->
-              <div
-                class="cert-card"
-                data-img="assets/certificates/UC-98dcdd55-df0c-46e5-9add-c73eff78bb58.pdf"
-                data-title="FastAPI - The Complete Course 2026 (Beginner + Advanced)"
-                data-source="Udemy"
-              >
-                <img
-                  src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png"
-                  alt="FastAPI Certificate"
-                />
-                <div class="cert-caption">
-                  <strong>
-                    FastAPI – The Complete Course 2026 (Beginner + Advanced)
-                  </strong>
-                  <span>Udemy</span>
-                </div>
+        <div class="about-grid">
+          <p class="about-lead">
+            I like working where strong foundations make ambitious ideas easier
+            to ship.
+          </p>
+          <div class="about-body">
+            <p>
+              I'm Rasika, a backend-focused Python developer with experience
+              building secure, maintainable systems. My sweet spot is the space
+              between a messy problem and a reliable product: understanding the
+              constraints, shaping the system, and leaving it better documented
+              than I found it.
+            </p>
+            <p>
+              I bring a security mindset to everyday engineering and keep
+              learning across system design, cloud infrastructure, and developer
+              experience.
+            </p>
+            <div class="capabilities">
+              <div class="capability">
+                <strong>Backend development</strong
+                ><span>Python · FastAPI · Django · REST</span>
               </div>
-              <!-- add for linkedin learing node essedtial training -->
-              <div
-                class="cert-card"
-                data-title="Node.js Essential Training"
-                data-source="LinkedIn Learning"
-                data-img = "/assets/certificates/CertificateOfCompletion_Node.js Essential Training.pdf"
-              >
-
-                <img
-                  src="./assets/node-js.png"
-                  alt="Node.js Certificate"
-                />
-                <div class="cert-caption">
-                  <strong>Node.js Essential Training</strong>
-                  <span>LinkedIn Learning</span>
-                </div>
-
-            </div>
-            <div
-                class="cert-card"
-                data-title="Learning npm: A Package Manager"
-                data-source="LinkedIn Learning"
-                data-img = "/assets/certificates/CertificateOfCompletion_Learning npm A Package Manager.pdf"
-              >
-
-              <!-- add npm icon -->
-
-                <img
-                  src="./assets/node-js.png"
-                  alt="NPM Certificate"
-                />
-                <div class="cert-caption">
-                  <strong>Learning npm: A Package Manager</strong>
-                  <span>LinkedIn Learning</span>
-                </div>
-
-            </div>
-          </div>
-
-          <!-- ===== 2024 ===== -->
-          <div class="cert-year">
-            <h4>2024</h4>
-
-            <div class="cert-grid">
-              <!-- Cloud Computing -->
-              <div
-                class="cert-card"
-                data-img="assets/certificates/Cloud Computing.pdf"
-                data-title="Cloud Computing"
-                data-source="NPTEL – IIT Madras"
-              >
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_sRo5NEMP5zaR3_zi3vhtirpmKTSCHrGTw&s"
-                  alt="Cloud Computing Certificate"
-                />
-                <div class="cert-caption">
-                  <strong>Cloud Computing</strong>
-                  <span>NPTEL – IIT Madras</span>
-                </div>
+              <div class="capability">
+                <strong>Cloud & delivery</strong><span>Docker · AWS</span>
               </div>
-
-              <!-- Blockchain -->
-              <div
-                class="cert-card"
-                data-img="./assets/certificates/Blockchain and its Applications.pdf"
-                data-title="Blockchain and its Applications"
-                data-source="NPTEL"
-              >
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_sRo5NEMP5zaR3_zi3vhtirpmKTSCHrGTw&s"
-                  alt="Blockchain Certificate"
-                />
-                <div class="cert-caption">
-                  <strong>Blockchain and its Applications</strong>
-                  <span>NPTEL</span>
-                </div>
+              <div class="capability">
+                <strong>Data & systems</strong
+                ><span>SQL · PostgreSQL · MongoDB · Oracle</span>
+              </div>
+              <div class="capability">
+                <strong>Also fluent in</strong
+                ><span>JavaScript · React · Node.js</span>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <aside>
-        <div class="card">
-          <h3>Quick Info</h3>
-          <p class="muted">Based in Mumbai • Open to backend roles</p>
-          <!-- add small github logo -->
-          <img
-            src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-            alt="GitHub Logo"
-            style="width: 20px; vertical-align: middle; margin-right: 5px"
-          />
-          <a href="https://github.com/rasikapurohit" target="_blank"
-            >github.com/rasikapurohit</a
-          >
-          <br />
-          <!-- add small linkedin icon and link -->
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
-            alt="LinkedIn Logo"
-            style="width: 20px; vertical-align: middle; margin-right: 5px"
-          />
-          <a href="https://www.linkedin.com/in/rasikapurohit" target="_blank"
-            >linkedin.com/in/rasikapurohit</a
+      +
+      <section class="wrap section" id="journey">
+        <div class="section-heading">
+          <h2>The journey so far</h2>
+          <p>
+            Experience shaped by curiosity and a healthy respect for production.
+          </p>
+        </div>
+        <div class="timeline">
+          <article class="role">
+            <span class="role-date">2025 — now</span>
+            <h3>Python Developer</h3>
+            <p>Safran India</p>
+          </article>
+          <article class="role">
+            <span class="role-date">2022 — 2025</span>
+            <h3>Executive</h3>
+            <p>IDBI Intech</p>
+          </article>
+          <article class="role">
+            <span class="role-date">2019 — 2021</span>
+            <h3>Analyst</h3>
+            <p>Jio Haptik</p>
+          </article>
+        </div>
+      </section>
+      +
+      <section class="wrap contact" id="contact">
+        <h2>Have a thoughtful problem?<br /><em>Let's make it real.</em></h2>
+        <div class="contact-links">
+          <a
+            href="https://github.com/rasikapurohit"
+            target="_blank"
+            rel="noopener"
+            >GitHub ↗</a
+          ><a
+            href="https://www.linkedin.com/in/rasikapurohit"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn ↗</a
           >
         </div>
-        <a href="https://roadmap.sh"
-          ><img
-            src="https://roadmap.sh/card/tall/645518da05999de060bb0c1a?variant=dark&roadmaps=python%2Cjavascript%2Capi-design%2Cbackend"
-            alt="roadmap.sh"
-        /></a>
-      </aside>
+      </section>
+      +
     </main>
-
-    <!-- RESUME MODAL -->
-    <div class="modal" id="resumeModal">
-      <div class="modal-content">
-        <iframe src="assets/rasika_purohit.pdf"></iframe>
-      </div>
-    </div>
-
-    <div class="cert-modal" id="certModal">
-      <div class="cert-modal-content">
-        <iframe id="certModalFrame" style="display: none"></iframe>
-
-        <img id="certModalImg" style="display: none" />
-
-        <div class="cert-modal-caption">
-          <strong id="certModalTitle"></strong>
-          <div class="muted" id="certModalSource"></div>
-        </div>
-      </div>
-    </div>
-
-    <script>
-      /* Light / Dark toggle (dark default) */
-      const toggle = document.getElementById("themeToggle");
-      toggle.onclick = () => {
-        document.body.classList.toggle("light");
-        toggle.textContent = document.body.classList.contains("light")
-          ? "🌙"
-          : "☀️";
-      };
-
-      /* Resume modal */
-      const modal = document.getElementById("resumeModal");
-      document.getElementById("resumeOpen").onclick = () =>
-        (modal.style.display = "flex");
-      modal.onclick = () => (modal.style.display = "none");
-    </script>
-    <script>
-      const certModal = document.getElementById("certModal");
-      const certImg = document.getElementById("certModalImg");
-      const certFrame = document.getElementById("certModalFrame");
-      const certTitle = document.getElementById("certModalTitle");
-      const certSource = document.getElementById("certModalSource");
-
-      document.querySelectorAll(".cert-card").forEach((card) => {
-        card.addEventListener("click", () => {
-          const file = card.dataset.img;
-
-          // Reset
-          certImg.style.display = "none";
-          certFrame.style.display = "none";
-          certImg.src = "";
-          certFrame.src = "";
-
-          certTitle.textContent = card.dataset.title;
-          certSource.textContent = card.dataset.source;
-
-          if (file.endsWith(".pdf")) {
-            certFrame.src = file;
-            certFrame.style.display = "block";
-          } else {
-            certImg.src = file;
-            certImg.style.display = "block";
-          }
-
-          certModal.style.display = "flex";
-        });
-      });
-
-      // Close on background click
-      certModal.addEventListener("click", (e) => {
-        if (e.target === certModal) {
-          certModal.style.display = "none";
-          certFrame.src = "";
-          certImg.src = "";
-        }
-      });
-
-      // ESC key close
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          certModal.style.display = "none";
-          certFrame.src = "";
-          certImg.src = "";
-        }
-      });
-    </script>
-    <script>
-  /* Navbar click animation */
-  document.querySelectorAll("nav a").forEach((link) => {
-    link.addEventListener("click", () => {
-      link.classList.remove("nav-click");
-      void link.offsetWidth; // force reflow to restart animation
-      link.classList.add("nav-click");
-    });
-  });
-</script>
-
+    +
+    <footer class="wrap">
+      <span>© 2026 Rasika Purohit</span><span>Built with care in Mumbai</span>
+    </footer>
+    +
   </body>
+  +
 </html>
