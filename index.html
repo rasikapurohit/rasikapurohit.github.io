@@ -8,14 +8,8 @@
       content="Rasika Purohit is a Python backend developer focused on secure APIs, automation, and thoughtful system design."
     />
     <title>Rasika Purohit | Python Backend Developer</title>
-    <link rel="icon" type="image/png" href="./assets/coder.png" />
+    <link rel="icon" type="image/png" href="./assets/rrp.png" />
     <style>
-      @font-face {
-        font-family: "SFRounded";
-        src: url("./assets/SF-Pro-Rounded-Semibold.otf") format("opentype");
-        font-weight: 600;
-        font-display: swap;
-      }
       :root {
         --ink: #17211f;
         --muted: #66716d;
@@ -27,736 +21,687 @@
         --mint: #dce9df;
         --coral: #e68165;
         --yellow: #f1d588;
-        --shadow: 0 20px 60px rgba(39, 55, 49, 0.09);
       }
+
       * {
         box-sizing: border-box;
       }
+
       html {
         scroll-behavior: smooth;
       }
+
       body {
         margin: 0;
         color: var(--ink);
         background: var(--paper);
-        font-family: "SFRounded", Georgia, serif;
-        line-height: 1.55;
+        font-family: Georgia, "Times New Roman", serif;
+        line-height: 1.65;
       }
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        opacity: 0.28;
-        background-image: radial-gradient(#b1b9ad 0.7px, transparent 0.7px);
-        background-size: 13px 13px;
-        mask-image: linear-gradient(to bottom, black, transparent 75%);
-      }
+
       a {
         color: inherit;
         text-decoration: none;
       }
+
+      a:focus-visible {
+        outline: 2px solid var(--coral);
+        outline-offset: 4px;
+      }
+
       .wrap {
-        width: min(1160px, calc(100% - 48px));
+        width: min(900px, calc(100% - 48px));
         margin: 0 auto;
       }
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        border-bottom: 1px solid rgba(23, 33, 31, 0.1);
-        background: rgba(243, 240, 233, 0.86);
-        backdrop-filter: blur(16px);
+
+      .site-header {
+        border-bottom: 1px solid var(--line);
       }
+
       .nav {
-        min-height: 78px;
+        min-height: 72px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 24px;
+        font-family: Arial, sans-serif;
+        font-size: 0.9rem;
       }
+
       .mark {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        gap: 11px;
-        font-weight: 600;
+        gap: 10px;
+        color: var(--green-dark);
+        font-weight: 700;
       }
+
       .mark-box {
-        width: 35px;
-        height: 35px;
+        width: 32px;
+        height: 32px;
         display: grid;
         place-items: center;
         color: var(--card);
         background: var(--green);
-        border-radius: 9px 9px 9px 2px;
-        font-size: 0.78rem;
-        letter-spacing: 0.08em;
+        border-radius: 50%;
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
       }
+
       .nav-links {
         display: flex;
-        gap: 26px;
+        gap: 24px;
         color: var(--muted);
-        font-size: 0.92rem;
       }
-      .nav-links a:hover {
-        color: var(--green-dark);
-      }
-      .nav-cta {
-        padding: 10px 17px;
-        border: 1px solid var(--green);
-        border-radius: 999px;
-        color: var(--green-dark);
-        font-size: 0.88rem;
-      }
+
+      .nav-links a:hover,
       .nav-cta:hover {
-        color: var(--card);
-        background: var(--green);
-      }
-      main {
-        position: relative;
-        overflow: hidden;
-      }
-      .hero {
-        min-height: 650px;
-        padding: 115px 0 92px;
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        align-items: center;
-        gap: 70px;
-      }
-      .kicker {
-        display: flex;
-        align-items: center;
-        gap: 10px;
         color: var(--green);
-        font-size: 0.78rem;
-        letter-spacing: 0.14em;
+      }
+
+      .nav-cta {
+        color: var(--green-dark);
+      }
+
+      .portfolio-layout {
+        width: min(1120px, calc(100% - 64px));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(270px, 0.85fr) minmax(0, 1.15fr);
+        align-items: start;
+        gap: clamp(48px, 7vw, 96px);
+      }
+
+      .intro {
+        min-height: calc(100vh - 72px);
+        position: sticky;
+        top: 0;
+        padding: 44px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 22px;
+      }
+
+      .content-column {
+        min-width: 0;
+      }
+
+      .content-column .wrap {
+        width: 100%;
+      }
+
+      .kicker,
+      .post-meta,
+      .role-date,
+      .eyebrow {
+        color: var(--green);
+        font-family: Arial, sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
       }
-      .kicker::before {
-        content: "";
-        width: 30px;
-        height: 1px;
-        background: var(--coral);
-      }
+
       h1,
       h2,
       h3,
       p {
         margin-top: 0;
       }
+
       h1 {
-        max-width: 700px;
-        margin: 20px 0 23px;
-        font-family: Georgia, serif;
-        font-size: clamp(3.8rem, 8vw, 7.8rem);
+        max-width: 540px;
+        margin: 10px 0 14px;
+        font-size: clamp(2.2rem, 4.5vw, 3.5rem);
         font-weight: 400;
-        letter-spacing: -0.08em;
-        line-height: 0.87;
+        letter-spacing: -0.05em;
+        line-height: 1.05;
       }
-      h1 em {
+
+      h1 em,
+      .contact h2 em {
         color: var(--green);
         font-style: normal;
       }
-      .hero-copy > p {
+
+      .intro-copy > p {
         max-width: 510px;
+        margin-bottom: 18px;
         color: var(--muted);
-        font-size: 1.12rem;
+        font-size: 1rem;
       }
-      .hero-actions {
+
+      .intro-links {
         display: flex;
-        align-items: center;
+        flex-wrap: wrap;
         gap: 18px;
-        margin-top: 32px;
+        font-family: Arial, sans-serif;
+        font-size: 0.9rem;
       }
-      .button {
-        display: inline-flex;
-        align-items: center;
-        gap: 9px;
-        padding: 13px 20px;
-        border-radius: 5px;
-        border: 1px solid var(--green);
-        font-size: 0.92rem;
-      }
-      .button.primary {
+
+      .intro-links a:first-child {
+        padding: 9px 14px;
         color: var(--card);
         background: var(--green);
-        box-shadow: 7px 7px 0 var(--yellow);
+        border-radius: 3px;
       }
-      .button.primary:hover {
-        transform: translate(2px, 2px);
-        box-shadow: 4px 4px 0 var(--yellow);
-      }
-      .button.text {
-        border-color: transparent;
+
+      .intro-links a:last-child {
+        padding: 9px 0;
         color: var(--green-dark);
-        padding-left: 3px;
+        text-decoration: underline;
+        text-decoration-color: var(--coral);
+        text-underline-offset: 4px;
       }
-      .button.text span {
-        transition: transform 0.2s ease;
-      }
-      .button.text:hover span {
-        transform: translateX(5px);
-      }
-      .hero-art {
-        position: relative;
-        min-height: 420px;
-        display: grid;
-        place-items: center;
-      }
-      .hero-art::before {
-        content: "";
-        position: absolute;
-        width: 340px;
-        height: 340px;
-        border-radius: 50%;
-        background: var(--mint);
-        transform: rotate(-12deg);
-      }
+
       .portrait {
-        position: relative;
-        width: 270px;
-        height: 350px;
+        width: 112px;
+        height: 144px;
         object-fit: cover;
-        object-position: center;
-        border-radius: 135px 135px 12px 12px;
-        filter: saturate(0.82);
-        box-shadow: 18px 20px 0 var(--coral);
+        border-radius: 70px 70px 4px 4px;
+        box-shadow: 8px 8px 0 var(--yellow);
       }
-      .art-note {
-        position: absolute;
-        right: 0;
-        bottom: 30px;
-        max-width: 145px;
-        padding: 13px 15px;
-        background: var(--yellow);
-        border-radius: 2px;
-        font-size: 0.84rem;
-        line-height: 1.25;
-        transform: rotate(4deg);
-      }
-      .scroll-note {
-        position: absolute;
-        left: 24px;
-        bottom: 26px;
-        color: var(--muted);
-        font-size: 0.73rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        writing-mode: vertical-rl;
-      }
+
       .section {
-        padding: 90px 0;
+        padding: 52px 0;
         border-top: 1px solid var(--line);
       }
+
       .section-heading {
         display: flex;
         align-items: baseline;
         justify-content: space-between;
         gap: 24px;
-        margin-bottom: 42px;
+        margin-bottom: 28px;
       }
+
       .section-heading h2 {
         margin: 0;
-        font-family: Georgia, serif;
-        font-size: clamp(2.4rem, 5vw, 4.3rem);
+        font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 400;
-        letter-spacing: -0.07em;
-        line-height: 0.95;
+        letter-spacing: -0.055em;
+        line-height: 1.1;
       }
+
       .section-heading p {
         max-width: 300px;
         margin: 0;
         color: var(--muted);
-        font-size: 0.93rem;
+        font-size: 0.92rem;
       }
-      .project-grid {
+
+      .post-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .post {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 18px;
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 28px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
       }
-      .project {
-        min-height: 340px;
-        padding: 27px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border: 1px solid var(--line);
-        border-radius: 7px;
-        overflow: hidden;
-        background: var(--card);
-        transition:
-          transform 0.25s ease,
-          box-shadow 0.25s ease;
+
+      .post-meta {
+        padding-top: 5px;
+        color: var(--coral);
+        letter-spacing: 0.07em;
       }
-      .project:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow);
-      }
-      .project:nth-child(1) {
-        grid-column: span 7;
-        background: var(--green);
-        color: var(--card);
-      }
-      .project:nth-child(2) {
-        grid-column: span 5;
-        background: #e7ddd0;
-      }
-      .project:nth-child(3) {
-        grid-column: span 5;
-        background: var(--yellow);
-      }
-      .project:nth-child(4) {
-        grid-column: span 7;
-        background: var(--card);
-      }
-      .project-num {
-        font-size: 0.76rem;
-        letter-spacing: 0.12em;
-        opacity: 0.7;
-      }
-      .project h3 {
-        max-width: 410px;
-        margin: 35px 0 9px;
-        font-family: Georgia, serif;
-        font-size: clamp(1.7rem, 3vw, 2.8rem);
+
+      .post h3 {
+        margin: 0 0 7px;
+        color: var(--green-dark);
+        font-size: clamp(1.35rem, 3vw, 1.75rem);
         font-weight: 400;
-        letter-spacing: -0.06em;
-        line-height: 0.98;
+        letter-spacing: -0.035em;
+        line-height: 1.2;
       }
-      .project p {
-        max-width: 420px;
-        margin-bottom: 20px;
-        color: inherit;
-        opacity: 0.75;
-        font-size: 0.93rem;
+
+      .post p {
+        max-width: 620px;
+        margin: 0 0 9px;
+        color: var(--muted);
+        font-size: 0.98rem;
       }
-      .project-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        font-size: 0.77rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+
+      .post-tags {
+        color: var(--green);
+        font-family: Arial, sans-serif;
+        font-size: 0.78rem;
       }
-      .arrow {
-        width: 36px;
-        height: 36px;
-        display: grid;
-        place-items: center;
-        border: 1px solid currentColor;
-        border-radius: 50%;
-        font-size: 1.1rem;
-      }
-      .about-grid {
+
+      .about-copy {
         display: grid;
         grid-template-columns: 0.8fr 1.2fr;
-        gap: 90px;
-        align-items: start;
+        gap: 48px;
       }
+
       .about-lead {
         margin: 0;
-        font-family: Georgia, serif;
-        font-size: clamp(1.75rem, 3vw, 3rem);
-        letter-spacing: -0.05em;
-        line-height: 1.05;
+        color: var(--green-dark);
+        font-size: clamp(1.55rem, 3vw, 2.1rem);
+        letter-spacing: -0.04em;
+        line-height: 1.2;
       }
+
       .about-body {
         color: var(--muted);
-        font-size: 1rem;
       }
+
       .about-body p:last-child {
         margin-bottom: 0;
       }
+
       .capabilities {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0 30px;
-        margin-top: 35px;
+        gap: 0 24px;
+        margin-top: 26px;
         border-top: 1px solid var(--line);
       }
+
       .capability {
-        padding: 17px 0;
+        padding: 13px 0;
         border-bottom: 1px solid var(--line);
+        font-family: Arial, sans-serif;
       }
+
       .capability strong {
         display: block;
         margin-bottom: 3px;
         color: var(--green-dark);
-      }
-      .capability span {
-        color: var(--muted);
         font-size: 0.85rem;
       }
-      .timeline {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        border-top: 1px solid var(--ink);
+
+      .capability span {
+        color: var(--muted);
+        font-size: 0.78rem;
       }
+
+      .experience-list {
+        border-top: 1px solid var(--line);
+      }
+
       .role {
-        padding: 22px 22px 8px 0;
-        border-right: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr) auto;
+        align-items: baseline;
+        gap: 24px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
       }
-      .role:not(:first-child) {
-        padding-left: 22px;
-      }
-      .role:last-child {
-        border-right: 0;
-      }
+
       .role-date {
         color: var(--coral);
-        font-size: 0.78rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
+        letter-spacing: 0.04em;
       }
-      .role h3 {
-        margin: 24px 0 4px;
-        font-size: 1.18rem;
-      }
+
+      .role h3,
       .role p {
         margin: 0;
-        color: var(--muted);
-        font-size: 0.88rem;
       }
-      .contact {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 30px;
-        align-items: end;
-        padding: 58px 0 82px;
-      }
-      .contact h2 {
-        max-width: 690px;
-        margin: 0;
-        font-family: Georgia, serif;
-        font-size: clamp(2.5rem, 6vw, 5.6rem);
+
+      .role h3 {
+        color: var(--green-dark);
+        font-size: 1.1rem;
         font-weight: 400;
-        letter-spacing: -0.08em;
-        line-height: 0.9;
       }
-      .contact h2 em {
-        color: var(--coral);
-        font-style: normal;
+
+      .role p {
+        color: var(--muted);
+        font-size: 0.9rem;
       }
+
+      .contact {
+        padding: 64px 0;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .contact h2 {
+        max-width: 620px;
+        margin: 0;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        font-weight: 400;
+        letter-spacing: -0.06em;
+        line-height: 1.02;
+      }
+
       .contact-links {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        gap: 8px;
+        gap: 5px;
         color: var(--green-dark);
-        font-size: 0.92rem;
+        font-family: Arial, sans-serif;
+        font-size: 0.88rem;
+        white-space: nowrap;
       }
+
       .contact-links a {
-        border-bottom: 1px solid var(--green);
+        text-decoration: underline;
+        text-decoration-color: var(--coral);
+        text-underline-offset: 4px;
       }
+
       footer {
-        padding: 20px 0;
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-        font-size: 0.78rem;
+        width: min(1120px, calc(100% - 64px));
+        margin: 0 auto;
+        padding: 17px 0;
         display: flex;
         justify-content: space-between;
+        gap: 14px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-family: Arial, sans-serif;
+        font-size: 0.76rem;
       }
-      @media (max-width: 760px) {
+
+      @media (max-width: 800px) {
+        .portfolio-layout {
+          width: min(700px, calc(100% - 48px));
+          display: block;
+        }
+
+        .intro {
+          min-height: 0;
+          position: static;
+          padding: 42px 0 34px;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 112px;
+          align-items: center;
+          gap: 28px;
+        }
+
+        footer {
+          width: min(700px, calc(100% - 48px));
+        }
+      }
+
+      @media (max-width: 640px) {
         .wrap {
-          width: min(100% - 32px, 600px);
+          width: min(100% - 32px, 520px);
         }
+
         .nav {
-          min-height: 68px;
+          min-height: 64px;
+          gap: 12px;
+          font-size: 0.82rem;
         }
+
         .nav-links {
-          display: none;
+          gap: 12px;
         }
+
         .nav-cta {
-          padding: 8px 12px;
-        }
-        .hero {
-          min-height: auto;
-          padding: 80px 0 100px;
-          grid-template-columns: 1fr;
-          gap: 50px;
-        }
-        h1 {
-          font-size: clamp(3.7rem, 18vw, 6rem);
-        }
-        .hero-art {
-          min-height: 340px;
-        }
-        .portrait {
-          width: 220px;
-          height: 285px;
-        }
-        .hero-art::before {
-          width: 270px;
-          height: 270px;
-        }
-        .art-note {
-          right: 3%;
-          bottom: 5px;
-        }
-        .scroll-note {
           display: none;
         }
-        .section {
-          padding: 70px 0;
+
+        .intro {
+          padding: 42px 0 34px;
+          grid-template-columns: 1fr;
+          gap: 22px;
         }
-        .section-heading,
+
+        .portrait {
+          width: 96px;
+          height: 124px;
+        }
+
+        .section {
+          padding: 40px 0;
+        }
+
+        .section-heading {
+          display: block;
+        }
+
+        .section-heading p {
+          margin-top: 9px;
+        }
+
+        .post {
+          grid-template-columns: 1fr;
+          gap: 7px;
+          padding: 19px 0;
+        }
+
+        .about-copy {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+
+        .capabilities {
+          grid-template-columns: 1fr;
+        }
+
+        .role {
+          grid-template-columns: 1fr auto;
+          gap: 4px 14px;
+        }
+
+        .role-date {
+          grid-column: 1 / -1;
+        }
+
         .contact {
           display: block;
+          padding: 48px 0;
         }
-        .section-heading p {
-          margin-top: 16px;
-        }
-        .project-grid {
-          display: block;
-        }
-        .project {
-          min-height: 300px;
-          margin-bottom: 15px;
-        }
-        .about-grid {
-          display: block;
-        }
-        .about-body {
-          margin-top: 35px;
-        }
-        .timeline {
-          display: block;
-        }
-        .role,
-        .role:not(:first-child) {
-          padding: 20px 0;
-          border-right: 0;
-          border-bottom: 1px solid var(--line);
-        }
-        .role:last-child {
-          border-bottom: 0;
-        }
-        .role h3 {
-          margin-top: 13px;
-        }
+
         .contact-links {
           align-items: flex-start;
-          margin-top: 35px;
+          margin-top: 22px;
         }
+
         footer {
-          gap: 14px;
           flex-direction: column;
         }
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
     </style>
-    +
   </head>
-  +
   <body>
-    +
-    <header>
+    <header class="site-header">
       <div class="wrap nav">
-        <a class="mark" href="#top" aria-label="Rasika Purohit home"
-          ><span class="mark-box">RP</span><span>Rasika Purohit</span></a
-        >
+        <a class="mark" href="#top" aria-label="Rasika Purohit home">
+          <span class="mark-box">RP</span>
+          <span>Rasika Purohit</span>
+        </a>
         <nav class="nav-links" aria-label="Primary navigation">
-          <a href="#work">Work</a><a href="#about">About</a
-          ><a href="#journey">Journey</a>
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#journey">Journey</a>
         </nav>
         <a class="nav-cta" href="mailto:rasikapurohit.dev@gmail.com"
           >Let's talk ↗</a
         >
       </div>
     </header>
-    +
-    <main id="top">
-      +
-      <section class="wrap hero">
-        <div class="hero-copy">
+
+    <main class="portfolio-layout" id="top">
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
           <div class="kicker">Python developer · Mumbai</div>
-          <h1>Building the <em>quiet</em> systems behind big ideas.</h1>
+          <h1 id="intro-title">
+            Building the <em>quiet</em> systems behind big ideas.
+          </h1>
           <p>
             Backend engineer focused on secure APIs, useful automation, and
             software that stays understandable as it grows.
           </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#work"
-              >See selected work <span>↘</span></a
-            ><a
-              class="button text"
-              href="./assets/rasika_purohit.pdf"
-              target="_blank"
-              rel="noopener"
-              >View resume <span>↗</span></a
+          <div class="intro-links">
+            <a href="#work">Read about my work → </a>
+            <a href="./assets/rasika_purohit.pdf" target="_blank" rel="noopener"
+              >View resume ↗</a
             >
           </div>
         </div>
-        <div class="hero-art">
-          <img
-            class="portrait"
-            src="./assets/girl.png"
-            alt="Illustration of Rasika Purohit working"
-          />
-          <div class="art-note">
-            Turning complex backend problems into clear next steps.
+        <img
+          class="portrait"
+          src="./assets/girl.png"
+          alt="Illustration of Rasika Purohit working"
+        />
+      </section>
+
+      <div class="content-column">
+        <section class="wrap section" id="work">
+          <div class="section-heading">
+            <h2>Selected work</h2>
+            <p>A few problem spaces I enjoy getting my hands dirty with.</p>
           </div>
-          <div class="scroll-note">Scroll to explore ↓</div>
-        </div>
-      </section>
-      +
-      <section class="wrap section" id="work">
-        <div class="section-heading">
-          <h2>Selected work</h2>
-          <p>A few problem spaces I enjoy getting my hands dirty with.</p>
-        </div>
-        <div class="project-grid">
-          <article class="project">
-            <div>
-              <span class="project-num">01 / API ENGINEERING</span>
-              <h3>Secure API Platform</h3>
-              <p>
-                Designed REST services with FastAPI, access control, and
-                monitoring for secure internal workflows.
-              </p>
-            </div>
-            <div class="project-footer">
-              <span>FastAPI · PostgreSQL · Docker</span
-              ><span class="arrow">↗</span>
-            </div>
-          </article>
-          <article class="project">
-            <div>
-              <span class="project-num">02 / AUTOMATION</span>
-              <h3>Automation Engine</h3>
-              <p>
-                Connected cloud services into backend workflows that reduce
-                repetitive operational work.
-              </p>
-            </div>
-            <div class="project-footer">
-              <span>Python · AWS · APIs</span><span class="arrow">↗</span>
-            </div>
-          </article>
-          <article class="project">
-            <div>
-              <span class="project-num">03 / RELIABILITY</span>
-              <h3>Performance Tuning</h3>
-              <p>
-                Improved response times and service reliability for critical
-                backend systems.
-              </p>
-            </div>
-            <div class="project-footer">
-              <span>Systems · Observability</span><span class="arrow">↗</span>
-            </div>
-          </article>
-          <article class="project">
-            <div>
-              <span class="project-num">04 / CRAFT</span>
-              <h3>Systems with a human side.</h3>
-              <p>
-                Good engineering is equal parts architecture, communication, and
-                making the next change feel possible.
-              </p>
-            </div>
-            <div class="project-footer">
-              <span>Designing for longevity</span><span class="arrow">↗</span>
-            </div>
-          </article>
-        </div>
-      </section>
-      +
-      <section class="wrap section" id="about">
-        <div class="section-heading">
-          <h2>A little context</h2>
-          <p>Curious by default. Practical by choice.</p>
-        </div>
-        <div class="about-grid">
-          <p class="about-lead">
-            I like working where strong foundations make ambitious ideas easier
-            to ship.
-          </p>
-          <div class="about-body">
-            <p>
-              I'm Rasika, a backend-focused Python developer with experience
-              building secure, maintainable systems. My sweet spot is the space
-              between a messy problem and a reliable product: understanding the
-              constraints, shaping the system, and leaving it better documented
-              than I found it.
+          <div class="post-list">
+            <article class="post">
+              <div class="post-meta">API engineering</div>
+              <div>
+                <h3>Secure API Platform</h3>
+                <p>
+                  Designed REST services with FastAPI, access control, and
+                  monitoring for secure internal workflows.
+                </p>
+                <div class="post-tags">FastAPI · PostgreSQL · Docker</div>
+              </div>
+            </article>
+            <article class="post">
+              <div class="post-meta">Automation</div>
+              <div>
+                <h3>Automation Engine</h3>
+                <p>
+                  Connected cloud services into backend workflows that reduce
+                  repetitive operational work.
+                </p>
+                <div class="post-tags">Python · AWS · APIs</div>
+              </div>
+            </article>
+            <article class="post">
+              <div class="post-meta">Reliability</div>
+              <div>
+                <h3>Performance Tuning</h3>
+                <p>
+                  Improved response times and service reliability for critical
+                  backend systems.
+                </p>
+                <div class="post-tags">Systems · Observability</div>
+              </div>
+            </article>
+            <article class="post">
+              <div class="post-meta">Engineering craft</div>
+              <div>
+                <h3>Systems with a human side.</h3>
+                <p>
+                  Good engineering is equal parts architecture, communication,
+                  and making the next change feel possible.
+                </p>
+                <div class="post-tags">Designing for longevity</div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="wrap section" id="about">
+          <div class="section-heading">
+            <h2>A little context</h2>
+            <p>Curious by default. Practical by choice.</p>
+          </div>
+          <div class="about-copy">
+            <p class="about-lead">
+              I like working where strong foundations make ambitious ideas
+              easier to ship.
             </p>
-            <p>
-              I bring a security mindset to everyday engineering and keep
-              learning across system design, cloud infrastructure, and developer
-              experience.
-            </p>
-            <div class="capabilities">
-              <div class="capability">
-                <strong>Backend development</strong
-                ><span>Python · FastAPI · Django · REST</span>
-              </div>
-              <div class="capability">
-                <strong>Cloud & delivery</strong><span>Docker · AWS</span>
-              </div>
-              <div class="capability">
-                <strong>Data & systems</strong
-                ><span>SQL · PostgreSQL · MongoDB · Oracle</span>
-              </div>
-              <div class="capability">
-                <strong>Also fluent in</strong
-                ><span>JavaScript · React · Node.js</span>
+            <div class="about-body">
+              <p>
+                I'm Rasika, a backend-focused Python developer with experience
+                building secure, maintainable systems. My sweet spot is the
+                space between a messy problem and a reliable product:
+                understanding the constraints, shaping the system, and leaving
+                it better documented than I found it.
+              </p>
+              <p>
+                I bring a security mindset to everyday engineering and keep
+                learning across system design, cloud infrastructure, and
+                developer experience.
+              </p>
+              <div class="capabilities">
+                <div class="capability">
+                  <strong>Backend development</strong>
+                  <span>Python · FastAPI · Django · REST</span>
+                </div>
+                <div class="capability">
+                  <strong>Cloud &amp; delivery</strong>
+                  <span>Docker · AWS</span>
+                </div>
+                <div class="capability">
+                  <strong>Data &amp; systems</strong>
+                  <span>SQL · PostgreSQL · MongoDB · Oracle</span>
+                </div>
+                <div class="capability">
+                  <strong>Also fluent in</strong>
+                  <span>JavaScript · React · Node.js</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      +
-      <section class="wrap section" id="journey">
-        <div class="section-heading">
-          <h2>The journey so far</h2>
-          <p>
-            Experience shaped by curiosity and a healthy respect for production.
-          </p>
-        </div>
-        <div class="timeline">
-          <article class="role">
-            <span class="role-date">2025 — now</span>
-            <h3>Python Developer</h3>
-            <p>Safran India</p>
-          </article>
-          <article class="role">
-            <span class="role-date">2022 — 2025</span>
-            <h3>Executive</h3>
-            <p>IDBI Intech</p>
-          </article>
-          <article class="role">
-            <span class="role-date">2019 — 2021</span>
-            <h3>Analyst</h3>
-            <p>Jio Haptik</p>
-          </article>
-        </div>
-      </section>
-      +
-      <section class="wrap contact" id="contact">
-        <h2>Have a thoughtful problem?<br /><em>Let's make it real.</em></h2>
-        <div class="contact-links">
-          <a
-            href="https://github.com/rasikapurohit"
-            target="_blank"
-            rel="noopener"
-            >GitHub ↗</a
-          ><a
-            href="https://www.linkedin.com/in/rasikapurohit"
-            target="_blank"
-            rel="noopener"
-            >LinkedIn ↗</a
-          >
-        </div>
-      </section>
-      +
+        </section>
+
+        <section class="wrap section" id="journey">
+          <div class="section-heading">
+            <h2>The journey so far</h2>
+            <p>
+              Experience shaped by curiosity and a healthy respect for
+              production.
+            </p>
+          </div>
+          <div class="experience-list">
+            <article class="role">
+              <span class="role-date">2025 — now</span>
+              <h3>Python Developer</h3>
+              <p>Safran India</p>
+            </article>
+            <article class="role">
+              <span class="role-date">2022 — 2025</span>
+              <h3>Executive</h3>
+              <p>IDBI Intech</p>
+            </article>
+            <article class="role">
+              <span class="role-date">2019 — 2021</span>
+              <h3>Analyst</h3>
+              <p>Jio Haptik</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="wrap contact" id="contact">
+          <h2>Have a thoughtful problem?<br /><em>Let's make it real.</em></h2>
+          <div class="contact-links">
+            <a
+              href="https://github.com/rasikapurohit"
+              target="_blank"
+              rel="noopener"
+              >GitHub ↗</a
+            >
+            <a
+              href="https://www.linkedin.com/in/rasikapurohit"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn ↗</a
+            >
+          </div>
+        </section>
+      </div>
     </main>
-    +
+
     <footer class="wrap">
-      <span>© 2026 Rasika Purohit</span><span>Built with care in Mumbai</span>
+      <span>© 2026 Rasika Purohit</span>
+      <span>Built with care in Mumbai</span>
     </footer>
-    +
   </body>
-  +
 </html>
